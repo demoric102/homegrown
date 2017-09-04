@@ -1,3 +1,3 @@
-interface Role {
+export class Role {
     
 }

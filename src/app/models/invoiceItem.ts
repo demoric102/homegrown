@@ -1,5 +1,5 @@
-interface InvoiceItem {
-    name: 'string';
-    quantity: 'float';
-    unitPrice: 'float';
+export class InvoiceItem {
+    name: string;
+    quantity: number;
+    unitPrice: number;
 }

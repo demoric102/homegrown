@@ -1,5 +1,7 @@
-interface Zone {
-    name: 'string';
-    description: 'string';
+import { Lga } from "./lga";
+
+export class Zone {
+    name: string;
+    description: string;
     lgas: Lga;
 }

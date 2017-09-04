@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { CatererService } from "../../services/caterer";
+import { Caterer } from "../../models/caterer";
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -27,10 +28,9 @@ export class SignupComponent implements OnInit {
 
   createSupplier(): void {
     alert('yay');
-    let op = {
-      firstname : 'poju'
-    };
-    this.catererService.createCaterer(op).subscribe((response)=>{
+    let caterer: Caterer = new Caterer();
+    caterer.firstname = 'Ade';
+    this.catererService.createCaterer(caterer).subscribe((response)=>{
       console.log(response);
     }, (reason)=>{
       console.log(reason);

@@ -41,12 +41,12 @@
           Phone Number
         </label>
         <input type="text" class="form-control" placeholder="phone" name="Phone" #phone="ngModel" 
-          [(ngModel)]="signup.address" minlength="11" maxlength="15" required/>
+          [(ngModel)]="signup.phone" minlength="11" maxlength="15" required/>
         <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
           <small [hidden]="!phone.errors.required">
             Your Phone Number is required.
           </small>
-          <small [hidden]="!address.errors.minlength">
+          <small [hidden]="!phone.errors.minlength">
             Min characters is 11
           </small>
         </div>

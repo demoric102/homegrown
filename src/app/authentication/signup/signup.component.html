@@ -21,6 +21,82 @@
           </small>
         </div>
       </fieldset>
+      <fieldset class="form-group" [class.has-danger]="lastname.errors && lastname.touched">
+        <label for="lastname">
+          Last Name
+        </label>
+        <input type="text" class="form-control" placeholder="Last Name" name="lastname" #lastname="ngModel" 
+          [(ngModel)]="signup.lastname" minlength="2" required/>
+        <div class="form-control-feedback" *ngIf="lastname.errors && lastname.touched">
+          <small [hidden]="!lastname.errors.required">
+            Last name is required.
+          </small>
+          <small [hidden]="!lastname.errors.minlength">
+            Min characters is 2
+          </small>
+        </div>
+      </fieldset>
+      <fieldset class="form-group" [class.has-danger]="phone.errors && phone.touched">
+        <label for="phone">
+          Phone Number
+        </label>
+        <input type="text" class="form-control" placeholder="phone" name="Phone" #phone="ngModel" 
+          [(ngModel)]="signup.address" minlength="11" maxlength="15" required/>
+        <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
+          <small [hidden]="!phone.errors.required">
+            Your Phone Number is required.
+          </small>
+          <small [hidden]="!address.errors.minlength">
+            Min characters is 11
+          </small>
+        </div>
+      </fieldset>
+      <fieldset class="form-group" [class.has-danger]="email.errors && email.touched">
+        <label for="email">
+          Email
+        </label>
+        <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" 
+          [(ngModel)]="signup.email" minlength="5" required/>
+        <div class="form-control-feedback" *ngIf="email.errors && email.touched">
+          <small [hidden]="!email.errors.required">
+            Your Email is required.
+          </small>
+          <small [hidden]="!email.errors.minlength">
+            Min characters is 5
+          </small>
+        </div>
+      </fieldset>
+      <fieldset class="form-group" [class.has-danger]="address.errors && address.touched">
+        <label for="address">
+          Address
+        </label>
+        <textarea class="form-control" placeholder="Address" name="address" #address="ngModel" 
+          [(ngModel)]="signup.address" minlength="20" required>
+        </textarea>
+        <div class="form-control-feedback" *ngIf="address.errors && address.touched">
+          <small [hidden]="!address.errors.required">
+            Your Address is required.
+          </small>
+          <small [hidden]="!address.errors.minlength">
+            Min characters is 20
+          </small>
+        </div>
+      </fieldset>
+      <fieldset class="form-group" [class.has-danger]="accountNumber.errors && accountNumber.touched">
+        <label for="accountNumber">
+          Bank Account Number
+        </label>
+        <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" 
+          [(ngModel)]="signup.accountNumber" minlength="10" required/>
+        <div class="form-control-feedback" *ngIf="accountNumber.errors && accountNumber.touched">
+          <small [hidden]="!accountNumber.errors.required">
+            Account Number is required.
+          </small>
+          <small [hidden]="!accountNumber.errors.minlength">
+            Min characters is 10
+          </small>
+        </div>
+      </fieldset>
       <!-- <fieldset class="form-group" [class.has-danger]="firstname.errors">
         <label for="username">
           Choose a username

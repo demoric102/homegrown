@@ -1,47 +1,55 @@
 <div class="d-flex align-items-stretch flex-nowrap min-height-100 h-100">
-  <div class="bg-cover bg-2 hidden-sm-down col-md-6 col-lg-8"></div>
-  <div class="card card-block mb-0 rounded-0 p-5 col-sm-12 col-md-6 col-lg-4">
+  <div class="bg-cover bg-2 hidden-sm-down col-md-6 col-lg-6"></div>
+  <div class="card card-block mb-0 rounded-0 p-5 col-sm-12 col-md-6 col-lg-6">
     <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="mb-3 text-center">
         <img src="assets/images/logo.png" class="avatar-md mb-1" alt="">
         <p class="ff-headers text-uppercase">Home Grown School Feeding Programme</p>
       </div>
-      <fieldset class="form-group" [class.has-danger]="firstname.errors && firstname.touched">
-        <label for="firstname">
-          First Name
-        </label>
-        <input type="text" class="form-control" placeholder="First Name" name="firstname" #firstname="ngModel" 
-          [(ngModel)]="signup.firstname" minlength="2" required/>
-        <div class="form-control-feedback" *ngIf="firstname.errors && firstname.touched">
-          <small [hidden]="!firstname.errors.required">
+      <div class="row">
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="firstname.errors && firstname.touched">
+            <label for="firstname">
+              First Name
+            </label>
+            <input type="text" class="form-control" placeholder="First Name" name="firstname" #firstname="ngModel" [(ngModel)]="signup.firstname"
+              minlength="2" required/>
+            <div class="form-control-feedback" *ngIf="firstname.errors && firstname.touched">
+              <small [hidden]="!firstname.errors.required">
             First name is required.
           </small>
-          <small [hidden]="!firstname.errors.minlength">
+              <small [hidden]="!firstname.errors.minlength">
             Min characters is 2
           </small>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
-      <fieldset class="form-group" [class.has-danger]="lastname.errors && lastname.touched">
-        <label for="lastname">
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="lastname.errors && lastname.touched">
+            <label for="lastname">
           Last Name
         </label>
-        <input type="text" class="form-control" placeholder="Last Name" name="lastname" #lastname="ngModel" 
-          [(ngModel)]="signup.lastname" minlength="2" required/>
-        <div class="form-control-feedback" *ngIf="lastname.errors && lastname.touched">
-          <small [hidden]="!lastname.errors.required">
+            <input type="text" class="form-control" placeholder="Last Name" name="lastname" #lastname="ngModel" [(ngModel)]="signup.lastname"
+              minlength="2" required/>
+            <div class="form-control-feedback" *ngIf="lastname.errors && lastname.touched">
+              <small [hidden]="!lastname.errors.required">
             Last name is required.
           </small>
-          <small [hidden]="!lastname.errors.minlength">
+              <small [hidden]="!lastname.errors.minlength">
             Min characters is 2
           </small>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
+      </div>
+      <div class="row">
+          <div class="col-md-6">
       <fieldset class="form-group" [class.has-danger]="phone.errors && phone.touched">
         <label for="phone">
           Phone Number
         </label>
-        <input type="text" class="form-control" placeholder="phone" name="Phone" #phone="ngModel" 
-          [(ngModel)]="signup.address" minlength="11" maxlength="15" required/>
+        <input type="text" class="form-control" placeholder="phone" name="Phone" #phone="ngModel" [(ngModel)]="signup.address" minlength="11"
+          maxlength="15" required/>
         <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
           <small [hidden]="!phone.errors.required">
             Your Phone Number is required.
@@ -51,12 +59,14 @@
           </small>
         </div>
       </fieldset>
+          </div>
+          <div class="col-md-6">
       <fieldset class="form-group" [class.has-danger]="email.errors && email.touched">
         <label for="email">
           Email
         </label>
-        <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" 
-          [(ngModel)]="signup.email" minlength="5" required/>
+        <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="signup.email" minlength="5"
+          required/>
         <div class="form-control-feedback" *ngIf="email.errors && email.touched">
           <small [hidden]="!email.errors.required">
             Your Email is required.
@@ -66,12 +76,14 @@
           </small>
         </div>
       </fieldset>
+          </div>
+      </div>
       <fieldset class="form-group" [class.has-danger]="address.errors && address.touched">
         <label for="address">
           Address
         </label>
-        <textarea class="form-control" placeholder="Address" name="address" #address="ngModel" 
-          [(ngModel)]="signup.address" minlength="20" required>
+        <textarea class="form-control" placeholder="Address" name="address" #address="ngModel" [(ngModel)]="signup.address" minlength="20"
+          required>
         </textarea>
         <div class="form-control-feedback" *ngIf="address.errors && address.touched">
           <small [hidden]="!address.errors.required">
@@ -82,12 +94,14 @@
           </small>
         </div>
       </fieldset>
+      <div class="row">
+          <div class="col-md-6">
       <fieldset class="form-group" [class.has-danger]="accountNumber.errors && accountNumber.touched">
         <label for="accountNumber">
           Bank Account Number
         </label>
-        <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" 
-          [(ngModel)]="signup.accountNumber" minlength="10" required/>
+        <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="signup.accountNumber"
+          minlength="10" required/>
         <div class="form-control-feedback" *ngIf="accountNumber.errors && accountNumber.touched">
           <small [hidden]="!accountNumber.errors.required">
             Account Number is required.
@@ -97,6 +111,8 @@
           </small>
         </div>
       </fieldset>
+          </div>
+      </div>
       <!-- <fieldset class="form-group" [class.has-danger]="firstname.errors">
         <label for="username">
           Choose a username

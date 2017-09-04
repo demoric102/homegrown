@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { CatererService } from "../../services/caterer";
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -14,7 +15,7 @@ const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 export class SignupComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private catererService: CatererService) {}
 
   ngOnInit() {
     this.form = this.fb.group( {
@@ -22,6 +23,18 @@ export class SignupComponent implements OnInit {
       password: password,
       confirmPassword: confirmPassword
     } );
+  }
+
+  createSupplier(): void {
+    alert('yay');
+    let op = {
+      firstname : 'poju'
+    };
+    this.catererService.createCaterer(op).subscribe((response)=>{
+      console.log(response);
+    }, (reason)=>{
+      console.log(reason);
+    })
   }
 
   onSubmit() {

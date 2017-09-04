@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { SharedModule } from './shared/shared.module';
+import { CatererService } from "./services/caterer";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +44,9 @@ export function createTranslateLoader(http: HttpClient) {
     NgbModule.forRoot(),
     SidebarModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    CatererService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

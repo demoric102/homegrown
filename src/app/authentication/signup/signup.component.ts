@@ -27,18 +27,17 @@ export class SignupComponent implements OnInit {
   }
 
   createSupplier(): void {
-    alert('yay');
-    let caterer: Caterer = new Caterer();
-    caterer.firstname = 'Ade';
-    this.catererService.createCaterer(caterer).subscribe((response)=>{
-      console.log(response);
-    }, (reason)=>{
-      console.log(reason);
-    })
   }
 
   onSubmit() {
-    this.router.navigate( ['/'] );
+    let caterer: Caterer = new Caterer();
+    caterer.firstname = 'Ade';
+    this.catererService.createCaterer(caterer).subscribe((response)=>{
+      // this.router.navigate( ['/'] );
+      console.info(response);
+    }, (reason)=>{
+      console.warn(reason);
+    })
   }
 
 }

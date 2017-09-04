@@ -4,9 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { CatererService } from "../../services/caterer";
 import { Caterer } from "../../models/caterer";
-
-const password = new FormControl('', Validators.required);
-const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
+import { Supplier } from "../../models/supplier";
 
 @Component({
   selector: 'app-signup',
@@ -14,28 +12,19 @@ const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  private signup: any = {};
 
-  public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private catererService: CatererService) {}
+  constructor(private router: Router, private catererService: CatererService) { }
 
   ngOnInit() {
-    this.form = this.fb.group( {
-      uname: [null , Validators.compose ( [ Validators.required ] )],
-      password: password,
-      confirmPassword: confirmPassword
-    } );
-  }
 
-  createSupplier(): void {
   }
 
   onSubmit() {
-    let caterer: Caterer = new Caterer();
-    caterer.firstname = 'Ade';
-    this.catererService.createCaterer(caterer).subscribe((response)=>{
+    this.catererService.createCaterer(this.signup).subscribe((response) => {
       // this.router.navigate( ['/'] );
       console.info(response);
-    }, (reason)=>{
+    }, (reason) => {
       console.warn(reason);
     })
   }

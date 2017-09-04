@@ -8,9 +8,12 @@
 module.exports = {
 
   attributes: {
-    name: {
+    firstname: {
       type: 'string',
-      unique: true,
+      required: true
+    },
+    lastname: {
+      type: 'string',
       required: true
     },
     address: {
@@ -27,6 +30,9 @@ module.exports = {
     },
     zone: {
       model: 'zone'
+    },
+    bankAccount: {
+      model: 'BankAccount'
     }
   }
 };

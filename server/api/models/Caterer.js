@@ -10,12 +10,10 @@ module.exports = {
   attributes: {
     firstname: {
       type: 'string',
-      unique: true,
       required: true
     },
     lastname: {
       type: 'string',
-      unique: true,
       required: true
     },
     address: {

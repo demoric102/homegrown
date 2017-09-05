@@ -25,6 +25,9 @@ export const AppRoutes: Routes = [{
     path: 'forms',
     loadChildren: './form/form.module#FormModule'
   }, {
+    path: 'lga',
+    loadChildren: './lga/lga.module#LgaModule'
+  }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule'
   }, {

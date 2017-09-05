@@ -1,47 +1,74 @@
-<div class="card">
-  <div class="toolbar" id="toolbar-toolbar">
-    <span class="ql-formats">
-      <select class="ql-font">
-        <option selected=""></option>
-        <option value="serif"></option>
-        <option value="monospace"></option>
-      </select>
-      <select class="ql-size">
-        <option value="small"></option>
-        <option selected=""></option>
-        <option value="large"></option>
-        <option value="huge"></option>
-      </select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-bold"></button>
-      <button class="ql-italic"></button>
-      <button class="ql-underline"></button>
-      <button class="ql-strike"></button>
-    </span>
-    <span class="ql-formats">
-      <select class="ql-color"></select>
-      <select class="ql-background"></select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-list" value="ordered"></button>
-      <button class="ql-list" value="bullet"></button>
-      <select class="ql-align">
-        <option selected=""></option>
-        <option value="center"></option>
-        <option value="right"></option>
-        <option value="justify"></option>
-      </select>
-    </span>
-    <span class="ql-formats">
-      <button class="ql-link"></button>
-      <button class="ql-image"></button>
-    </span>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        Create Supplier
+      </div>
+      <div class="card-block">
+        <form>
+          <div class="form-group">
+            <label for="supplierName">Supplier Name</label>
+            <input type="text" class="form-control" placeholder="Supplier Name" minlength="2">
+            <div class="form-control-feedback" *ngIf="suppllierName.errors && suppllierName.touched">
+              <small [hidden]="!suppllierName.errors.required">
+                Supplier Name is required.
+              </small>
+              <small [hidden]="!suppllierName.errors.minlength">
+                Min characters is 2
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="supplierAddress">Supplier Address</label>
+            <input name="supplierAddress" type="text" class="form-control" placeholder="Supplier Address" minlength="10">
+            <div class="form-control-feedback" *ngIf="suppllierAddress.errors && suppllierAddress.touched">
+              <small [hidden]="!suppllierAddress.errors.required">
+                Supplier Address
+              </small>
+              <small [hidden]="!suppllierAddress.errors.minlength">
+                Min characters is 10
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="zone">Zone</label>
+            <select name="zone" class="form-control" id="">
+              <option value="Zone 1">Zone 1</option>
+              <option value="Zone 2">Zone 2</option>
+              <option value="Zone 3">Zone 3</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="lga">LGA</label>
+            <select name="lga" class="form-control" id="">
+              <option value="ADAVI">ADAVI</option>
+              <option value="AJAOKUTA">AJAOKUTA</option>
+              <option value="ANKPA">ANKPA</option>
+              <option value="BASSA">BASSA</option>
+              <option value="DEKINA">DEKINA</option>
+              <option value="IBAJI">IBAJI</option>
+              <option value="IDAH">IDAH</option>
+              <option value="IGALAMELA">IGALAMELA</option>
+              <option value="IGALAMELA ODULU">IGALAMELA ODULU</option>
+              <option value="IJUMU">IJUMU</option>
+              <option value="KABBA/BUNU">KABBA/BUNU</option>
+              <option value="KOGI">KOGI</option>
+              <option value="LOKOJA">LOKOJA</option>
+              <option value="MOPA MURO">MOPA MURO</option>
+              <option value="OFU">OFU</option>
+              <option value="OGORI/MAGONGO">OGORI/MAGONGO</option>
+              <option value="OKEHI">OKEHI</option>
+              <option value="OKENE">OKENE</option>
+              <option value="OLAMABORO">OLAMABORO</option>
+              <option value="OMALA">OMALA</option>
+              <option value="YAGBA EAST">YAGBA EAST</option>
+              <option value="YAGBA WEST">YAGBA WEST</option>
+          </select>
+          </div>
+          <div class="block mb-3"></div>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div id="editor-container">
-    <h2>One Ring to Rule Them All</h2>
-    <p> <a href="http://en.wikipedia.org/wiki/One_Ring"> http://en.wikipedia.org/wiki/One_Ring </a> </p>
-    <br/>
-    <p>Three Rings for the <em> Elven-kings </em> under the sky, Seven for the <u> Dwarf-lords </u> in halls of stone, Nine for <u> Mortal Men </u> , doomed to die, One for the <u> Dark Lord </u> on his dark throne. <br/> In the Land of Mordor where the Shadows lie. </p> <p> One Ring to <strong> rule </strong> them all, One Ring to <strong> find </strong> them, One Ring to <strong> bring </strong> them all and in the darkness <strong> bind </strong> them. In the Land of Mordor where the Shadows lie. </p>
-   </div>
 </div>

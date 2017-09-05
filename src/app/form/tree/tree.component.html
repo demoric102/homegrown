@@ -1,77 +1,49 @@
-<div class="card">
-  <div class="card-block">
-    <div class="row">
-      <div class="col-md-4">
-        
-        <form class="mb-1">
-          <input class="form-control" placeholder="Filter nodes" #filter (keyup)="filterNodes(filter.value, tree)">
-        </form>
-
-        <tree-root
-          #tree
-          [nodes]="nodes"
-          [options]="customTemplateStringOptions"
-          [focused]="true"
-          (onEvent)="onEvent($event)">
-          <ng-template #treeNodeTemplate let-node>
-            <span title="{{node.data.subTitle}}">{{ node.data.name }}</span>
-            <span class="pull-right">{{ childrenCount(node) }}</span>
-            <button (click)="go($event)">Custom Action</button>
-          </ng-template>
-          <ng-template #loadingTemplate>Loading, please hold....</ng-template>
-        </tree-root>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        Match LGA to Zones
       </div>
-
-      <div class="col-md-8">
-        <p class="ff-headers text-uppercase mb-3 fw-600">Keys:</p>
-        <p>down | up | left | right | space | enter</p>
-        
-        <p class="ff-headers text-uppercase mb-3 fw-600">Mouse:</p>
-        <p>click to select | shift+click to select multi</p>
-        
-        <p class="ff-headers text-uppercase mb-3 fw-600">API:</p>
-        <button class="btn btn-secondary" (click)="tree.treeModel.focusNextNode()">next node</button>
-        <button class="btn btn-secondary" (click)="tree.treeModel.focusPreviousNode()">previous node</button>
-        <button class="btn btn-secondary" (click)="tree.treeModel.focusDrillDown()">drill down</button>
-        <button class="btn btn-secondary" (click)="tree.treeModel.focusDrillUp()">drill up</button>
-        <button class="btn btn-secondary" (click)="customTemplateStringOptions.allowDrag = true">allowDrag</button>
-        <p></p>
-        <button class="btn btn-secondary"
-          [disabled]="!tree.treeModel.getFocusedNode()"
-          (click)="tree.treeModel.getFocusedNode().toggleActivated()">
-          {{ tree.treeModel.getFocusedNode()?.isActive ? 'deactivate' : 'activate' }}
-        </button>
-        <button class="btn btn-secondary"
-          [disabled]="!tree.treeModel.getFocusedNode()"
-          (click)="tree.treeModel.getFocusedNode().toggleExpanded()">
-          {{ tree.treeModel.getFocusedNode()?.isExpanded ? 'collapse' : 'expand' }}
-        </button>
-        <button class="btn btn-secondary"
-          [disabled]="!tree.treeModel.getFocusedNode()"
-          (click)="tree.treeModel.getFocusedNode().blur()">
-          blur
-        </button>
-        <button class="btn btn-secondary"
-          (click)="addNode(tree)">
-          Add Node
-        </button>
-        <button class="btn btn-secondary"
-          (click)="activateSubSub(tree)">
-          Activate inner node
-        </button>
-        <p></p>
-        <button class="btn btn-secondary"
-          (click)="tree.treeModel.expandAll()">
-          Expand All
-        </button>
-        <button class="btn btn-secondary"
-          (click)="tree.treeModel.collapseAll()">
-          Collapse All
-        </button>
-        <button class="btn btn-secondary"
-          (click)="activeNodes(tree.treeModel)">
-          getActiveNodes()
-        </button>
+      <div class="card-block">
+        <form>
+          <div class="form-group">
+            <label for="zone">Zone</label>
+            <select name="zone" class="form-control" id="">
+              <option value="Zone 1">Zone 1</option>
+              <option value="Zone 2">Zone 2</option>
+              <option value="Zone 3">Zone 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lga">LGA</label>
+              <select name="lga" class="form-control" id="">
+                <option value="ADAVI">ADAVI</option>
+                <option value="AJAOKUTA">AJAOKUTA</option>
+                <option value="ANKPA">ANKPA</option>
+                <option value="BASSA">BASSA</option>
+                <option value="DEKINA">DEKINA</option>
+                <option value="IBAJI">IBAJI</option>
+                <option value="IDAH">IDAH</option>
+                <option value="IGALAMELA">IGALAMELA</option>
+                <option value="IGALAMELA ODULU">IGALAMELA ODULU</option>
+                <option value="IJUMU">IJUMU</option>
+                <option value="KABBA/BUNU">KABBA/BUNU</option>
+                <option value="KOGI">KOGI</option>
+                <option value="LOKOJA">LOKOJA</option>
+                <option value="MOPA MURO">MOPA MURO</option>
+                <option value="OFU">OFU</option>
+                <option value="OGORI/MAGONGO">OGORI/MAGONGO</option>
+                <option value="OKEHI">OKEHI</option>
+                <option value="OKENE">OKENE</option>
+                <option value="OLAMABORO">OLAMABORO</option>
+                <option value="OMALA">OMALA</option>
+                <option value="YAGBA EAST">YAGBA EAST</option>
+                <option value="YAGBA WEST">YAGBA WEST</option>
+              </select>
+          </div>
+          <div class="block mb-3"></div>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
       </div>
     </div>
   </div>

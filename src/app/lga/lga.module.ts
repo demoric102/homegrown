@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { LgaRoutes } from "./lga.routing";
+import { MatchComponent } from "../lga/tree/match.component";
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { LgaRoutes } from "./lga.routing";
     TextMaskModule,
     FileUploadModule
   ],
-  declarations: []
+  declarations: [MatchComponent]
 })
 
 export class LgaModule {}

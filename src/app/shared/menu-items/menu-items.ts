@@ -28,6 +28,58 @@ const MENUITEMS = [
     icon: 'basic-accelerator'
   },
   {
+    state: 'supplier',
+    name: 'SUPPLIER',
+    type: 'sub',
+    icon: 'basic-paperplane',
+    children: [
+      {
+        state: 'create',
+        name: 'CREATE'
+      },
+      {
+        state: 'list',
+        name: 'LIST'
+      }
+    ]
+  },
+  {
+    state: 'caterer',
+    name: 'CATERER',
+    type: 'sub',
+    icon: 'basic-paperplane',
+    children: [
+      {
+        state: 'create',
+        name: 'CREATE'
+      },
+      {
+        state: 'list',
+        name: 'LIST'
+      }
+    ]
+  },
+  {
+    state: 'zone',
+    name: 'ZONE',
+    type: 'sub',
+    icon: 'basic-paperplane',
+    children: [
+      {
+        state: 'create',
+        name: 'CREATE'
+      },
+      {
+        state: 'match',
+        name: 'MATCH'
+      },
+      {
+        state: 'list',
+        name: 'LIST'
+      }
+    ]
+  },
+  {
     state: 'email',
     name: 'EMAIL',
     type: 'link',

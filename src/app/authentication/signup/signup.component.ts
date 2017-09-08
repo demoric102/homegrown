@@ -5,6 +5,10 @@ import { CustomValidators } from 'ng2-validation';
 import { CatererService } from "../../services/caterer";
 import { Caterer } from "../../models/caterer";
 import { Supplier } from "../../models/supplier";
+import { LgaService } from "../../services/lga";
+import { Observable } from "rxjs/Observable";
+import { Lga } from "../../models/lga";
+import { Bank } from "../../models/bank";
 
 @Component({
   selector: 'app-signup',
@@ -13,14 +17,21 @@ import { Supplier } from "../../models/supplier";
 })
 export class SignupComponent implements OnInit {
   private signup: any = {};
-
-  constructor(private router: Router, private catererService: CatererService) { }
+  private lgas$: Observable<Array<Lga>>;
+  private banks$: Observable<Array<Bank>>;
+  
+  constructor(
+    private router: Router,
+    private catererService: CatererService,
+    private lgaService: LgaService
+  ) { }
 
   ngOnInit() {
-
+    this.lgas$ = this.lgaService.getAll();
   }
-
+  
   onSubmit() {
+    console.log(this.signup);
     this.catererService.createCaterer(this.signup).subscribe((response) => {
       // this.router.navigate( ['/'] );
       console.info(response);

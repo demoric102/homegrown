@@ -10,6 +10,16 @@ export const AppRoutes: Routes = [{
     path: '',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   }, {
+    path: 'supplier',
+    loadChildren: './supplier/supplier.module#SupplierModule'
+  }, { 
+    path: 'caterer',
+    loadChildren: './caterer/caterer.module#CatererModule'
+  },
+  { 
+    path: 'zone',
+    loadChildren: './zone/zone.module#ZoneModule'
+  }, {
     path: 'email',
     loadChildren: './email/email.module#EmailModule'
   }, {

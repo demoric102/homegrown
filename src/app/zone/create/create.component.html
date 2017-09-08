@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        Create Zone
+      </div>
+      <div class="card-block">
+        <form #createForm="ngForm" (ngSubmit)="bvnModal.open()">
+          <div class="row">
+            <div class="col-md-12">
+              <fieldset class="form-group" [class.has-danger]="name.errors && name.touched">
+                <label for="name">
+                      Name
+                    </label>
+                <input type="text" class="form-control" placeholder="First Name" name="name" #name="ngModel" [(ngModel)]="zone.name" minlength="2"
+                  required/>
+                <div class="form-control-feedback" *ngIf="name.errors && name.touched">
+                  <small [hidden]="!name.errors.required">
+                    LGA Name is required.
+                  </small>
+                  <small [hidden]="!name.errors.minlength">
+                    Min characters is 2
+                  </small>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-12">
+              <fieldset class="form-group" [class.has-danger]="decription.errors && decription.touched">
+                <label for="decription">
+                      Description
+                    </label>
+                <textarea class="form-control" placeholder="Description" name="decription" #decription="ngModel" [(ngModel)]="zone.decription"
+                  minlength="20" required>
+                    </textarea>
+                <div class="form-control-feedback" *ngIf="decription.errors && decription.touched">
+                  <small [hidden]="!decription.errors.required">
+                        Your decription is required.
+                      </small>
+                  <small [hidden]="!decription.errors.minlength">
+                        Min characters is 20
+                      </small>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+
+
+          <div class="block mb-3"></div>
+          <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

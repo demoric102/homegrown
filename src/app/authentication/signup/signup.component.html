@@ -1,7 +1,8 @@
 <div class="d-flex align-items-stretch flex-nowrap min-height-100 h-100">
   <div class="bg-cover bg-2 hidden-sm-down col-md-6 col-lg-6"></div>
   <div class="card card-block mb-0 rounded-0 p-5 col-sm-12 col-md-6 col-lg-6">
-    <form #signUpForm="ngForm" (ngSubmit)="onSubmit()">
+      <!-- <form #signUpForm="ngForm" (ngSubmit)="onSubmit()"> -->
+          <form #signUpForm="ngForm" (ngSubmit)="bvnModal.open()">
       <div class="mb-3 text-center">
         <img src="assets/images/logo.png" class="avatar-md mb-1" alt="">
         <p class="ff-headers text-uppercase">Home Grown School Feeding Programme</p>
@@ -43,91 +44,41 @@
         </div>
       </div>
       <div class="row">
-          <div class="col-md-6">
-      <fieldset class="form-group" [class.has-danger]="phone.errors && phone.touched">
-        <label for="phone">
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="phone.errors && phone.touched">
+            <label for="phone">
           Phone Number
         </label>
-        <input type="text" class="form-control" placeholder="phone" name="Phone" #phone="ngModel" [(ngModel)]="signup.address" minlength="11"
-          maxlength="15" required/>
-        <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
-          <small [hidden]="!phone.errors.required">
+            <input type="text" class="form-control" placeholder="Phone" name="Phone" #phone="ngModel" [(ngModel)]="signup.address" minlength="11"
+              maxlength="15" required/>
+            <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
+              <small [hidden]="!phone.errors.required">
             Your Phone Number is required.
           </small>
-          <small [hidden]="!phone.errors.minlength">
+              <small [hidden]="!phone.errors.minlength">
             Min characters is 11
           </small>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
-          </div>
-          <div class="col-md-6">
-      <fieldset class="form-group" [class.has-danger]="email.errors && email.touched">
-        <label for="email">
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="email.errors && email.touched">
+            <label for="email">
           Email
         </label>
-        <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="signup.email" minlength="5"
-          required/>
-        <div class="form-control-feedback" *ngIf="email.errors && email.touched">
-          <small [hidden]="!email.errors.required">
+            <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="signup.email" minlength="5"
+              required/>
+            <div class="form-control-feedback" *ngIf="email.errors && email.touched">
+              <small [hidden]="!email.errors.required">
             Your Email is required.
           </small>
-          <small [hidden]="!email.errors.minlength">
+              <small [hidden]="!email.errors.minlength">
             Min characters is 5
           </small>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
-          </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-    <fieldset class="form-group" [class.has-danger]="lga.errors && lga.touched">
-      <label for="lga">
-        LGA
-      </label>
-      <select name="lga" class="form-control" id="">
-        <option value="ADAVI">ADAVI</option>
-        <option value="AJAOKUTA">AJAOKUTA</option>
-        <option value="ANKPA">ANKPA</option>
-        <option value="BASSA">BASSA</option>
-        <option value="DEKINA">DEKINA</option>
-        <option value="IBAJI">IBAJI</option>
-        <option value="IDAH">IDAH</option>
-        <option value="IGALAMELA">IGALAMELA</option>
-        <option value="IGALAMELA ODULU">IGALAMELA ODULU</option>
-        <option value="IJUMU">IJUMU</option>
-        <option value="KABBA/BUNU">KABBA/BUNU</option>
-        <option value="KOGI">KOGI</option>
-        <option value="LOKOJA">LOKOJA</option>
-        <option value="MOPA MURO">MOPA MURO</option>
-        <option value="OFU">OFU</option>
-        <option value="OGORI/MAGONGO">OGORI/MAGONGO</option>
-        <option value="OKEHI">OKEHI</option>
-        <option value="OKENE">OKENE</option>
-        <option value="OLAMABORO">OLAMABORO</option>
-        <option value="OMALA">OMALA</option>
-        <option value="YAGBA EAST">YAGBA EAST</option>
-        <option value="YAGBA WEST">YAGBA WEST</option>
-    </select>
-    </fieldset>
-        </div>
-        <div class="col-md-6">
-    <fieldset class="form-group" [class.has-danger]="school.errors && school.touched">
-      <label for="school">
-        School
-      </label>
-      <select class="form-control">
-        <optgroup label="Swedish Cars">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-        </optgroup>
-        <optgroup label="German Cars">
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </optgroup>
-      </select>
-    </fieldset>
-        </div>
-    </div>
       <fieldset class="form-group" [class.has-danger]="address.errors && address.touched">
         <label for="address">
           Address
@@ -145,62 +96,66 @@
         </div>
       </fieldset>
       <div class="row">
-          <div class="col-md-6">
-      <fieldset class="form-group" [class.has-danger]="accountNumber.errors && accountNumber.touched">
-        <label for="accountNumber">
-          Bank Account Number
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="accountNumber.errors && accountNumber.touched">
+            <label for="accountNumber">
+          Account Number
         </label>
-        <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="signup.accountNumber"
-          minlength="10" required/>
-        <div class="form-control-feedback" *ngIf="accountNumber.errors && accountNumber.touched">
-          <small [hidden]="!accountNumber.errors.required">
+            <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="signup.accountNumber"
+              minlength="10" required/>
+            <div class="form-control-feedback" *ngIf="accountNumber.errors && accountNumber.touched">
+              <small [hidden]="!accountNumber.errors.required">
             Account Number is required.
           </small>
-          <small [hidden]="!accountNumber.errors.minlength">
+              <small [hidden]="!accountNumber.errors.minlength">
             Min characters is 10
           </small>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
-          </div>
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="bank.errors && bank.touched">
+            <label for="bank">
+        Bank
+      </label>
+            <select name="bank" class="form-control" #bank="ngModel" [(ngModel)]="signup.bank">
+        <option *ngFor="let bank of (banks$ | async)" [value]="bank.id">{{bank?.name}}</option>
+    </select>
+          </fieldset>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-    <fieldset class="form-group" [class.has-danger]="lga.errors && lga.touched">
-      <label for="lga">
-        LGA
-      </label>
-      <select name="lga" class="form-control" id="">
-        <option value="ADAVI">ADAVI</option>
-        <option value="AJAOKUTA">AJAOKUTA</option>
-        <option value="ANKPA">ANKPA</option>
-        <option value="BASSA">BASSA</option>
-        <option value="DEKINA">DEKINA</option>
-        <option value="IBAJI">IBAJI</option>
-        <option value="IDAH">IDAH</option>
-        <option value="IGALAMELA">IGALAMELA</option>
-        <option value="IGALAMELA ODULU">IGALAMELA ODULU</option>
-        <option value="IJUMU">IJUMU</option>
-        <option value="KABBA/BUNU">KABBA/BUNU</option>
-        <option value="KOGI">KOGI</option>
-        <option value="LOKOJA">LOKOJA</option>
-        <option value="MOPA MURO">MOPA MURO</option>
-        <option value="OFU">OFU</option>
-        <option value="OGORI/MAGONGO">OGORI/MAGONGO</option>
-        <option value="OKEHI">OKEHI</option>
-        <option value="OKENE">OKENE</option>
-        <option value="OLAMABORO">OLAMABORO</option>
-        <option value="OMALA">OMALA</option>
-        <option value="YAGBA EAST">YAGBA EAST</option>
-        <option value="YAGBA WEST">YAGBA WEST</option>
+          <fieldset class="form-group" [class.has-danger]="role.errors && role.touched">
+            <label for="role">
+      Role
+    </label>
+            <select name="role" class="form-control" #role="ngModel" [(ngModel)]="signup.role">
+              <option></option>
+        <option value="caterer">Caterer</option>
+        <option value="supplier">Supplier</option>
     </select>
-    </fieldset>
+          </fieldset>
         </div>
         <div class="col-md-6">
-    <fieldset class="form-group" [class.has-danger]="school.errors && school.touched">
-      <label for="school">
+          <fieldset class="form-group" [class.has-danger]="lga.errors && lga.touched">
+            <label for="lga">
+        LGA
+      </label>
+            <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="signup.lga">
+        <option *ngFor="let lga of (lgas$ | async)">{{lga?.name}}</option>
+    </select>
+          </fieldset>
+        </div>
+      </div>
+      <div class="row">
+        <ng-container *ngIf="signup.role === 'caterer'">
+        <div class="col-md-6">
+          <fieldset class="form-group" [class.has-danger]="school.errors && school.touched">
+            <label for="school">
         School
       </label>
-      <select class="form-control">
+            <select name="school" class="form-control" #school="ngModel" [(ngModel)]="signup.school">
         <optgroup label="Swedish Cars">
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
@@ -210,10 +165,11 @@
           <option value="audi">Audi</option>
         </optgroup>
       </select>
-    </fieldset>
+          </fieldset>
         </div>
-    </div>
-    
+        </ng-container>
+      </div>
+
       <label class="custom-control custom-checkbox mb-1">
         <input type="checkbox" class="custom-control-input">
         <span class="custom-control-indicator"></span>
@@ -226,3 +182,4 @@
     </form>
   </div>
 </div>
+<bvn-modal #bvnModal></bvn-modal>

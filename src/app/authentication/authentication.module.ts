@@ -8,15 +8,18 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { BvnModalComponent } from "./signup/modals/bvn/bvn.component";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AuthenticationRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
-  declarations: [SigninComponent, SignupComponent, ForgotComponent, LockscreenComponent]
+  declarations: [SigninComponent, SignupComponent, ForgotComponent, LockscreenComponent, BvnModalComponent]
 })
 
 export class AuthenticationModule {}

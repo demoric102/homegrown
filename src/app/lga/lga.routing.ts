@@ -1,14 +1,13 @@
 import { Routes } from '@angular/router';
-import { MatchComponent } from "../lga/tree/match.component";
-
+import { MatchComponent } from "./match/match.component";
 export const LgaRoutes: Routes = [
   {
     path: '',
     children: [{
-      path: 'basic',
+      path: 'match',
       component: MatchComponent,
       data: {
-        heading: 'Match forms'
+        heading: 'Match LGA - Zone'
       }
     }]
   }

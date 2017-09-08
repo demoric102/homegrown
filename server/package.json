@@ -9,6 +9,7 @@
     "bcrypt-nodejs": "0.0.3",
     "cron": "^1.2.1",
     "ejs": "^2.3.4",
+    "flutterwave": "^2.2.7",
     "fnv-plus": "^1.2.12",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",

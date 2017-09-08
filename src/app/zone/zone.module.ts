@@ -8,13 +8,15 @@ import { CustomFormsModule } from 'ng2-validation';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
-import { LgaRoutes } from "./lga.routing";
+import { ZoneRoutes } from "./zone.routing";
+import { CreateComponent } from "./create/create.component";
+import { ListComponent } from "./list/list.component";
 import { MatchComponent } from "./match/match.component";
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(LgaRoutes),
+    RouterModule.forChild(ZoneRoutes),
     FormsModule,
     ReactiveFormsModule,
     NgbProgressbarModule,
@@ -23,7 +25,7 @@ import { MatchComponent } from "./match/match.component";
     TextMaskModule,
     FileUploadModule
   ],
-  declarations: [MatchComponent]
+  declarations: [CreateComponent,ListComponent,MatchComponent]
 })
 
-export class LgaModule {}
+export class ZoneModule {}

@@ -25,18 +25,18 @@
               </fieldset>
             </div>
             <div class="col-md-12">
-              <fieldset class="form-group" [class.has-danger]="decription.errors && decription.touched">
-                <label for="decription">
+              <fieldset class="form-group" [class.has-danger]="description.errors && description.touched">
+                <label for="description">
                       Description
                     </label>
-                <textarea class="form-control" placeholder="Description" name="decription" #decription="ngModel" [(ngModel)]="zone.decription"
+                <textarea class="form-control" placeholder="Description" name="description" #description="ngModel" [(ngModel)]="zone.description"
                   minlength="20" required>
                     </textarea>
-                <div class="form-control-feedback" *ngIf="decription.errors && decription.touched">
-                  <small [hidden]="!decription.errors.required">
-                        Your decription is required.
+                <div class="form-control-feedback" *ngIf="description.errors && description.touched">
+                  <small [hidden]="!description.errors.required">
+                        Your description is required.
                       </small>
-                  <small [hidden]="!decription.errors.minlength">
+                  <small [hidden]="!description.errors.minlength">
                         Min characters is 20
                       </small>
                 </div>

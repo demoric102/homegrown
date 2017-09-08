@@ -118,8 +118,9 @@
                 Bank
               </label>
                     <select name="bank" class="form-control" #bank="ngModel" [(ngModel)]="supplier.bank">
-                <option *ngFor="let bank of (banks$ | async)" [value]="bank.id">{{bank?.name}}</option>
-            </select>
+                      <option disabled></option>
+                      <option *ngFor="let bank of (banks$ | async)" [value]="bank.code">{{bank?.name}}</option>
+                    </select>
                   </fieldset>
                 </div>
               </div>
@@ -130,14 +131,14 @@
                 LGA
               </label>
                     <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="supplier.lga">
-                <option *ngFor="let lga of (lgas$ | async)">{{lga?.name}}</option>
-            </select>
+                      <option disabled></option>
+                      <option *ngFor="let lga of (lgas$ | async)" [value]="lga.id">{{lga?.name}}</option>
+                  </select>
                   </fieldset>
                 </div>
               </div>
               <div class="block mb-3"></div>
-              <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button> -->
-              <button class="btn btn-primary" type="submit">Create</button>
+              <button class="btn btn-primary" type="submit" [disabled]="!createForm.valid">Create</button>
             </form>
       </div>
     </div>

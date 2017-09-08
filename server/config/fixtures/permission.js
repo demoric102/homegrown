@@ -66,21 +66,21 @@ function grantAdminPermissions(roles, models, admin) {
 function grantSupplierPermissions(roles, models, admin) {
     var registeredRole = _.find(roles, { name: 'user' });
     var permissions = [
-        {
-            model: _.find(models, { name: 'Caterer' }).id,
-            action: 'find',
-            role: registeredRole.id
-        },
-        {
-            model: _.find(models, { name: 'Food' }).id,
-            action: 'find',
-            role: registeredRole.id
-        },
-        {
-            model: _.find(models, { name: 'Invoice' }).id,
-            action: 'find',
-            role: registeredRole.id
-        },
+        // {
+        //     model: _.find(models, { name: 'Caterer' }).id,
+        //     action: 'find',
+        //     role: registeredRole.id
+        // },
+        // {
+        //     model: _.find(models, { name: 'Food' }).id,
+        //     action: 'find',
+        //     role: registeredRole.id
+        // },
+        // {
+        //     model: _.find(models, { name: 'Invoice' }).id,
+        //     action: 'find',
+        //     role: registeredRole.id
+        // },
         {
             model: _.find(models, { name: 'Supplier' }).id,
             action: 'update',

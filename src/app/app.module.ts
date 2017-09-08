@@ -18,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
 import { CatererService } from "./services/caterer";
 import { LgaService } from "./services/lga";
 import { BvnService } from "./services/bvn";
+import { BankService } from "./services/bank";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,7 +50,8 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     CatererService,
     LgaService,
-    BvnService
+    BvnService,
+    BankService
   ],
   bootstrap: [AppComponent]
 })

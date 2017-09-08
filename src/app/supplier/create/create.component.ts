@@ -5,6 +5,7 @@ import { Lga } from "../../models/lga";
 import { CatererService } from "../../services/caterer";
 import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
+import { BankService } from "../../services/bank";
 
 @Component({
   selector: 'app-create',
@@ -19,11 +20,13 @@ export class CreateComponent implements OnInit {
   constructor(
     private router: Router,
     private catererService: CatererService,
-    private lgaService: LgaService
+    private lgaService: LgaService,
+    private bankService: BankService
   ) { }
 
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
+    this.banks$ = this.bankService.getAll();
   }
   
   onSubmit() {

@@ -8,6 +8,18 @@ var flutterwave = new Flutterwave(sails.config.defaults.gateway_config.auth.apiK
 
 module.exports = {
 
+    getAvailableBanks: function () {
+        var promise = new Promise(function (resolve, reject) {
+            flutterwave.Bank.getBanks(function (err, res, body) {
+                if (err) {
+                    reject(err)
+                }
+                resolve(body.data)
+            })
+        })
+        return promise;
+    },
+
     verifyBvn: function (data) {
         var promise = new Promise(function (resolve, reject) {
             flutterwave.BVN.verify(data.otpoption, data.bvn, function (err, res, body) {

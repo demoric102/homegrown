@@ -14,7 +14,7 @@
                     <label for="lga">
                 LGA
               </label>
-                    <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="supplier.lga">
+                    <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="zone.lga">
                 <option *ngFor="let lga of (lgas$ | async)">{{lga?.name}}</option>
             </select>
                   </fieldset>
@@ -24,7 +24,7 @@
                       <label for="zone">
                   Zone
                 </label>
-                      <select name="zone" class="form-control" #zone="ngModel" [(ngModel)]="supplier.zone">
+                      <select name="zone" class="form-control" #zone="ngModel" [(ngModel)]="zone.zone">
                   <option *ngFor="let zone of (zones$ | async)" [value]="zone.id">{{zone?.name}}</option>
               </select>
                     </fieldset>

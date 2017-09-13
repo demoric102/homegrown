@@ -25,13 +25,20 @@ module.exports = {
       unique: true,
       required: true
     },
+    email: {
+      type: 'string',
+    },
     foods: {
       collection: 'food'
     },
-    zone: {
-      model: 'zone'
+    lga: {
+      model: 'lga'
     },
-    bankAccount: {
+    accountNumber: {
+      type: 'string',
+      unique: true
+    },
+    bank: {
       model: 'BankAccount'
     }
   }

@@ -19,6 +19,7 @@ import { CatererService } from "./services/caterer";
 import { LgaService } from "./services/lga";
 import { BvnService } from "./services/bvn";
 import { BankService } from "./services/bank";
+import { FooditemService } from "./services/fooditem";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -51,7 +52,8 @@ export function createTranslateLoader(http: HttpClient) {
     CatererService,
     LgaService,
     BvnService,
-    BankService
+    BankService,
+    FooditemService
   ],
   bootstrap: [AppComponent]
 })

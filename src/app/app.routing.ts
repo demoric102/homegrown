@@ -19,6 +19,10 @@ export const AppRoutes: Routes = [{
   { 
     path: 'zone',
     loadChildren: './zone/zone.module#ZoneModule'
+  },
+  { 
+    path: 'fooditem',
+    loadChildren: './fooditem/fooditem.module#FooditemModule'
   }, {
     path: 'email',
     loadChildren: './email/email.module#EmailModule'

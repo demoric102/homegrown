@@ -7,16 +7,17 @@ import { CustomFormsModule } from 'ng2-validation';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgbProgressbarModule, NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
+import { InvoiceRoutes } from "./invoice.routing";
 import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
-import { CatererRoutes } from "./caterer.routing";
 import { ViewComponent } from "./view/view.component";
 import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(CatererRoutes),
+    RouterModule.forChild(InvoiceRoutes),
     FormsModule,
     ReactiveFormsModule,
     NgbProgressbarModule,
@@ -30,4 +31,4 @@ import { DataTablesModule } from 'angular-datatables';
   declarations: [CreateComponent,ListComponent, ViewComponent]
 })
 
-export class CatererModule {}
+export class InvoiceModule {}

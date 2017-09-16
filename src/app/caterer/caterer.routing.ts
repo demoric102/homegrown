@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
+import { ViewComponent } from "./view/view.component";
 export const CatererRoutes: Routes = [
   {
     path: 'create',
@@ -15,6 +16,14 @@ export const CatererRoutes: Routes = [
     component: ListComponent,
     data: {
       heading: 'List Caterer',
+      removeFooter: true
+    }
+  },
+  {
+    path: 'view',
+    component: ViewComponent,
+    data: {
+      heading: 'View Caterer',
       removeFooter: true
     }
   }

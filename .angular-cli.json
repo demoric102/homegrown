@@ -26,9 +26,13 @@
         "../node_modules/angular-calendar/scss/angular-calendar.scss",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "assets/fonts/data-table/icons.css",
-        "assets/styles/app.scss"
+        "assets/styles/app.scss",
+        "../node_modules/datatables.net-dt/css/jquery.dataTables.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/datatables.net/js/jquery.dataTables.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

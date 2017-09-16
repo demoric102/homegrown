@@ -54,7 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     LgaService,
     BvnService,
     BankService,
-    FooditemService
+    FooditemService,
     SupplierService
   ],
   bootstrap: [AppComponent]

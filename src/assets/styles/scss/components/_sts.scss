@@ -15,7 +15,7 @@ $loader-animation-duration:      1s !default;
 }
 
 .loader02 {
-  @include loader02($align: middle);
+  @include loader02($size:36px, $color: #333333, $border-size: 4px, $align: middle);
 }
 
 .loader03 {

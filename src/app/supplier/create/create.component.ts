@@ -32,9 +32,15 @@ export class CreateComponent implements OnInit {
   }
   
   onSubmit() {
+    let that = this;
     this.progressLoading = true;
-    this.supplierService.createSupplier(this.supplier).subscribe((data)=>{
+    this.supplierService.createSupplier(this.supplier)
+    .subscribe((data)=>{
       console.info(data);
+    },(error)=>{
+      console.log(error);
+    },()=>{
+      that.progressLoading = false;
     });
   }
 }

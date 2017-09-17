@@ -27,11 +27,12 @@
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "assets/fonts/data-table/icons.css",
         "assets/styles/app.scss",
-        "../node_modules/datatables.net-dt/css/jquery.dataTables.css"
+        "../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/datatables.net/js/jquery.dataTables.js"
+        "../node_modules/datatables.net/js/jquery.dataTables.js",
+        "../node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

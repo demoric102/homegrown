@@ -1,6 +1,7 @@
-:host /deep/ tree-viewport {
-  overflow: visible;
-  > div {
-    height: auto!important;
-  }
+@import "../../../assets/styles/scss/components/sts";
+.loader02[_ngcontent-c3] {
+  top: 50%;
+  position: absolute !important;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }

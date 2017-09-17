@@ -5,10 +5,13 @@
         Create Supplier
       </div>
       <div class="card-block">
-        <ng-template #progressSpinner>
+        <ng-container *ngIf="progressLoading">
           <div class="loader02"></div>
-        </ng-template>
-        <form #createForm="ngForm" *ngIf="!progressLoading; else progressSpinner" (ngSubmit)="onSubmit()">
+        </ng-container>
+        <form #createForm="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
+          <div class="alert alert-danger" role="alert">
+            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+          </div>
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group" [class.has-danger]="firstname.errors && firstname.touched">

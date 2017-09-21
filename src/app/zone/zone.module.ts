@@ -12,6 +12,7 @@ import { ZoneRoutes } from "./zone.routing";
 import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
 import { MatchComponent } from "./match/match.component";
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { MatchComponent } from "./match/match.component";
     CustomFormsModule,
     TreeModule,
     TextMaskModule,
-    FileUploadModule
+    FileUploadModule,
+    DataTablesModule
   ],
   declarations: [CreateComponent,ListComponent,MatchComponent]
 })

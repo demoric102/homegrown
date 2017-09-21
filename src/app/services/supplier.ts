@@ -17,7 +17,12 @@ export class SupplierService {
 
     datatable(data: any): Observable<Array<Supplier>> {
         return this.http.post<ApiResponse>(''.concat(environment.apiUrl, endpoints.SUPPLIER_DATATABLE), data)
-        .map(response => response.data)
-        .catch((reason)=>reason.error.data);
+            .map(response => response.data)
+            .catch((reason) => reason.error.data);
+    }
+
+    getSupplier(id: any): Observable<Supplier> {
+        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.SUPPLIER,'?where={"id":"',id,'"}'))
+        .map(response => response.data[0]);
     }
 }

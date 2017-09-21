@@ -9,8 +9,8 @@
           <div class="loader02"></div>
         </ng-container>
         <form #createForm="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
-          <div class="alert alert-danger" role="alert">
-            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+          <div class="alert" [class.alert-success]="alert.status == 200" [class.alert-danger]="alert.status == 400" role="alert" *ngIf="alert.visible">
+            <strong>Oh snap!</strong> {{alert.message}}.
           </div>
           <div class="row">
             <div class="col-md-6">

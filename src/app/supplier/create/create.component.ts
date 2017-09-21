@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
 import { BankService } from "../../services/bank";
 import { SupplierService } from "../../services/supplier";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-create',
@@ -18,6 +19,11 @@ export class CreateComponent implements OnInit {
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
   private progressLoading = false;
+  private alert = {
+    visible: false,
+    status: null,
+    message: ''
+  }
 
   constructor(
     private router: Router,
@@ -30,17 +36,42 @@ export class CreateComponent implements OnInit {
     this.lgas$ = this.lgaService.getAll();
     this.banks$ = this.bankService.getAll();
   }
-  
+
   onSubmit() {
     let that = this;
     this.progressLoading = true;
+    that.alert = {
+      visible: false,
+      status: null,
+      message: ''
+    };
     this.supplierService.createSupplier(this.supplier)
-    .subscribe((data)=>{
-      console.info(data);
-    },(error)=>{
-      console.log(error);
-    },()=>{
-      that.progressLoading = false;
-    });
+      .subscribe((data) => {
+        that.supplier = {};
+        that.alert = {
+          visible: true,
+          status: 200,
+          message: ''.concat('A new supplier has been created.')
+        };
+        that.progressLoading = false;
+        console.info(data);
+      }, (error: HttpErrorResponse) => {
+        that.progressLoading = false;
+        if (error.error instanceof Error) {
+          that.alert = {
+            visible: true,
+            status: error.status,
+            message: ''.concat('An error occurred:', error.error.message)
+          };
+        } else {
+          that.alert = {
+            visible: true,
+            status: error.status,
+            message: ''.concat('An error occurred:', error.error.data.invalidAttributes[Object.keys(error.error.data.invalidAttributes)[0]][0].message)
+          };
+        }
+      }, () => {
+        that.progressLoading = false;
+      });
   }
 }

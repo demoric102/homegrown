@@ -22,7 +22,7 @@ export const SupplierRoutes: Routes = [
     }
   },
   {
-    path: 'view',
+    path: 'view/:id',
     component: ViewComponent,
     data: {
       heading: 'View Supplier',

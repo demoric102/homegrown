@@ -32,6 +32,14 @@ export class ListComponent implements OnInit {
             callback(response);
           });
       },
+      rowCallback: (row: Node, data: any[] | Object | any, index: number) => {
+        const self = this;
+        $('td', row).unbind('click');
+        $('td', row).bind('click', () => {
+          self.router.navigate(['/supplier/view',data.id])
+        });
+        return row;
+      },
       columns: [
         {
           data: 'firstname',
@@ -62,7 +70,7 @@ export class ListComponent implements OnInit {
           }
         }
       ],
-      order: [[3, 'desc']],
+      order: [[4, 'Desc']],
       lengthMenu: [20, 30, 50],
       pageLength: 20,
       autoWidth: false,

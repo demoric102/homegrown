@@ -22,7 +22,7 @@ export class SupplierService {
     }
 
     getSupplier(id: any): Observable<Supplier> {
-        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.SUPPLIER,'?where={"id":"',id,'"}'))
+        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.SUPPLIER,'?where={"id":"',id,'"}&populate=[bank,lga]'))
         .map(response => response.data[0]);
     }
 }

@@ -9,7 +9,6 @@
               <ng-container *ngIf="supplier$">
                 <div class="card">
                   <div class="card-block">
-                    <h6 class="text-uppercase mt-0 mb-3">Basic Information</h6>
 
                     <div class="row mb-2">
                       <div class="col">
@@ -19,116 +18,48 @@
                         </div>
                       </div>
                       <div class="col">
-                        <div class="d-flex justify-content-start">
+                        <div class="justify-content-start">
                           <div class="mr-auto">Address</div>
-                          <strong>No 15 Kashim Ibrahim Street Lokoja</strong>
+                          <strong>{{(supplier$ | async)?.address}}</strong>
                         </div>
                       </div>
                     </div>
 
                     <div class="row mb-2">
                       <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Phone</span>
-                          <strong>09083989723</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Phone</div>
+                          <strong>{{(supplier$ | async)?.phone}}</strong>
                         </div>
                       </div>
                       <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">LGA</span>
-                          <strong>Ankpa</strong>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row mb-2">
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Email</span>
-                          <strong>johndan103@gmail.com</strong>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Account Number</span>
-                          <strong>0124898783</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">LGA</div>
+                          <strong>{{(supplier$ | async)?.lga?.name}}</strong>
                         </div>
                       </div>
                     </div>
 
                     <div class="row mb-2">
                       <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Bank Name</span>
-                          <strong>Gtb</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Email</div>
+                          <strong>{{(supplier$ | async)?.email}}</strong>
                         </div>
                       </div>
                       <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">LGA</span>
-                          <strong>Ankpa</strong>
-                        </div>
-                      </div>
-                    </div>
-                    <br/>
-                    <h6 class="text-uppercase mt-0 mb-3">Food Items</h6>
-
-                    <div class="row mb-2">
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Names</span>
-                          <strong>{{(supplier$ | async)?.firstname}} {{(supplier$ | async)?.lastname}}</strong>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Address</span>
-                          <strong>No 15 Kashim Ibrahim Street Lokoja</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Account Number</div>
+                          <strong>{{(supplier$ | async)?.accountNumber}}</strong>
                         </div>
                       </div>
                     </div>
 
                     <div class="row mb-2">
                       <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Phone</span>
-                          <strong>09083989723</strong>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">LGA</span>
-                          <strong>Ankpa</strong>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row mb-2">
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Email</span>
-                          <strong>johndan103@gmail.com</strong>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Account Number</span>
-                          <strong>0124898783</strong>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row mb-2">
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Bank Name</span>
-                          <strong>Gtb</strong>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">LGA</span>
-                          <strong>Ankpa</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Bank Name</div>
+                          <strong>{{(supplier$ | async)?.bank}}</strong>
                         </div>
                       </div>
                     </div>
@@ -137,61 +68,86 @@
               </ng-container>
             </ng-template>
           </ngb-tab>
-          <ngb-tab>
-            <ng-template ngbTabTitle>Food Items</ng-template>
-            <ng-template ngbTabContent>
-              <div class="card">
-                <div class="card-block">
-                  <h6 class="text-uppercase mt-0 mb-3">Food Items</h6>
-
-                  <div class="row mb-2">
-                    <div class="col">
-                      <div class="d-flex justify-content-start">
-                        <span class="mr-auto">Egg</span>
-                        <input type="checkbox" value="indomie">
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex justify-content-start">
-                        <span class="mr-auto">Indomie</span>
-                        <input type="checkbox" value="indomie">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col">
-                      <div class="d-flex justify-content-start">
-                        <span class="mr-auto">Rice</span>
-                        <input type="checkbox" value="indomie">
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex justify-content-start">
-                        <span class="mr-auto">Potatoes</span>
-                        <input type="checkbox" value="indomie">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mb-2">
-                    <div class="col">
-                      <div class="d-flex justify-content-start">
-                        <span class="mr-auto">Bread</span>
-                        <input type="checkbox" value="indomie">
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex justify-content-start">
-                        <span class="mr-auto">Indomie</span>
-                        <input type="checkbox" value="indomie">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
         </ngb-tabset>
       </div>
     </div>
+  </div>
+</div>
+  <div class="row">
+  <div class="col-sm-8">
+  <div class="card">
+    <div class="card-header">
+      Food Item
+    </div>
+
+    <div class="card-block">
+      <div class="table-responsive">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th>
+                #
+              </th>
+              <th>
+                Name
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                </span>
+                1
+              </td>
+              <td>
+                Indomie
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                </span>
+                2
+              </td>
+              <td>
+                Egg
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                </span>
+                3
+              </td>
+              <td>
+                Rice
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                </span>
+                4
+              </td>
+              <td>
+                Yam
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                </span>
+                5
+              </td>
+              <td>
+                Cassava
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
   </div>
 </div>

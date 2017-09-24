@@ -21,6 +21,8 @@ import { BvnService } from "./services/bvn";
 import { BankService } from "./services/bank";
 import { FooditemService } from "./services/fooditem";
 import { SupplierService } from "./services/supplier";
+import { SchoolService } from "./services/school";
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,6 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
     LgaService,
     BvnService,
     BankService,
+    SchoolService,
     FooditemService,
     SupplierService
   ],

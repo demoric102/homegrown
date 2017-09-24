@@ -6,7 +6,9 @@ import { CatererService } from "../../services/caterer";
 import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
 import { BankService } from "../../services/bank";
+import { SchoolService } from "../../services/school";
 import { HttpErrorResponse } from "@angular/common/http";
+import { School } from "../../models/school";
 
 @Component({
   selector: 'app-create',
@@ -17,6 +19,7 @@ export class CreateComponent implements OnInit {
   private caterer: any = {};
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
+  private schools$: Observable<Array<School>>;
   private progressLoading = false;
   private alert = {
     visible: false,
@@ -28,12 +31,14 @@ export class CreateComponent implements OnInit {
     private router: Router,
     private catererService: CatererService,
     private lgaService: LgaService,
+    private schoolService: SchoolService,
     private bankService: BankService
   ) { }
 
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
     this.banks$ = this.bankService.getAll();
+    this.schools$ = this.schoolService.getAll();
   }
   
   onSubmit() {

@@ -6,25 +6,24 @@
  */
 
 module.exports = {
-
+  schema: true,
   attributes: {
     name: {
       type: 'string',
       required: true
     },
     address: {
-      type: 'string',
-      required: true
+      type: 'string'
     },
     email: {
       type: 'string',
     },
     phone: {
-      type: 'string',
-      required: true
+      type: 'string'
     },
-    zone: {
-      model: 'zone',
+    lga: {
+      model: 'lga',
+      required: true
     },
   }
 };

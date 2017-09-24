@@ -9,7 +9,7 @@ var permissionPolicies = [
 module.exports = function (sails) {
     return {
         identity: 'permissions',
-
+        _hookTimeout: 80000,
         /**
          * Local cache of Model name -> id mappings to avoid excessive database lookups.
          */

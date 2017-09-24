@@ -5,7 +5,10 @@ module.exports.defaults = {
     email: process.env.DEFAULT_EMAIL || 'admin@email.com',
     password: process.env.DEFAULT_PASSWORD || 'admin1234',
     afterEvent: [],
-    _hookTimeout: 60000,
+    _hookTimeout: 80000,
+    permissions: {
+        _hookTimeout: 80000,
+    },
     allowUnknownModelDefinitions: false,
     mail_config: {
         host: 'smtp.gmail.com',

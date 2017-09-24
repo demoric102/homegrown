@@ -4,7 +4,7 @@ import { Caterer } from "../models/caterer";
 import { endpoints } from "../shared/endpoints";
 import { environment } from "../../environments/environment";
 import { School } from "../models/school";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs/Observable"; 
 
 @Injectable()
 export class SchoolService {

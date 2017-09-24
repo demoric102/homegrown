@@ -5,7 +5,13 @@
         Create Caterer
       </div>
       <div class="card-block">
-          <form #createForm="ngForm" (ngSubmit)="bvnModal.open()">
+          <ng-container *ngIf="progressLoading">
+              <div class="loader02"></div>
+            </ng-container>
+          <form #createForm="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
+              <div class="alert" [class.alert-success]="alert.status == 200" [class.alert-danger]="alert.status == 400" role="alert" *ngIf="alert.visible">
+                  <strong>Oh snap!</strong> {{alert.message}}.
+                </div>
               <div class="row">
                 <div class="col-md-6">
                   <fieldset class="form-group" [class.has-danger]="firstname.errors && firstname.touched">
@@ -48,7 +54,7 @@
                     <label for="phone">
                   Phone Number
                 </label>
-                    <input type="text" class="form-control" placeholder="Phone" name="Phone" #phone="ngModel" [(ngModel)]="caterer.address" minlength="11"
+                    <input type="text" class="form-control" placeholder="Phone" name="Phone" #phone="ngModel" [(ngModel)]="caterer.phone" minlength="11"
                       maxlength="15" required/>
                     <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
                       <small [hidden]="!phone.errors.required">
@@ -146,8 +152,7 @@
                   </div>
               </div>
               <div class="block mb-3"></div>
-              <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button> -->
-              <button class="btn btn-primary" type="submit">Create</button>
+              <button class="btn btn-primary" type="submit" [disabled]="!createForm.valid">Create</button>
             </form>
       </div>
     </div>

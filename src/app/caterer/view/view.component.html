@@ -1,96 +1,71 @@
 <div class="wrapper">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-12">
         <div class="card">
-          <ngb-tabset class="card-tab">
-            <ngb-tab>
-              <ng-template ngbTabTitle>Caterer Info</ng-template>
-              <ng-template ngbTabContent>
+          <ng-container *ngIf="caterer$">
                 <div class="card">
+                    <div class="card-header">
+                        Basic Information
+                      </div>
                   <div class="card-block">
-                    <h6 class="text-uppercase mt-0 mb-3">Basic Information</h6>
-                    
                     <div class="row mb-2">
                       <div class="col">
-                        <div class="d-flex justify-content-start">   
-                          <span class="mr-auto">Names</span>
-                          <strong>+20 0593 4095</strong>
+                        <div class="justify-content-start">   
+                          <div class="mr-auto">Names</div>
+                          <strong>{{(caterer$ | async)?.firstname}} {{(caterer$ | async)?.lastname}}</strong>
                         </div>
                       </div>
                       <div class="col">          
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Address</span>
-                          <strong>94</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Address</div>
+                          <strong>{{(caterer$ | async)?.address}}</strong>
                         </div>
                       </div>
                     </div>
   
                     <div class="row mb-2">
                       <div class="col">       
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Phone</span>
-                          <strong>30.09.67</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Phone</div>
+                          <strong>{{(caterer$ | async)?.phone}}</strong>
                         </div>
                       </div>
                       <div class="col">          
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Country</span>
-                          <strong>South Africa</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">School Name</div>
+                          <strong>{{(caterer$ | async)?.school}}</strong>
                         </div>
                       </div>
                     </div>
   
                     <div class="row mb-2">
                       <div class="col">          
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Email</span>
-                          <strong>Assistant</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Email</div>
+                          <strong>{{(caterer$ | async)?.email}}</strong>
                         </div>
                       </div>
                       <div class="col">          
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Account Number</span>
-                          <strong>+23908924</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Account Number</div>
+                          <strong>{{(caterer$ | async)?.accountNumber}}</strong>
                         </div>
                       </div>
                     </div>
   
                     <div class="row mb-2">
                       <div class="col">          
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">Bank Name</span>
-                          <strong>@mrperkins</strong>
-                        </div>
-                      </div>
-                      <div class="col">          
-                        <div class="d-flex justify-content-start">
-                          <span class="mr-auto">LGA</span>
-                          <strong>mrperkins</strong>
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Bank Name</div>
+                          <strong>{{(caterer$ | async)?.bank}}</strong>
                         </div>
                       </div>
                     </div>
-                    <div class="row mb-2">
-                        <div class="col">          
-                          <div class="d-flex justify-content-start">
-                            <span class="mr-auto">Zone</span>
-                            <strong>@mrperkins</strong>
-                          </div>
-                        </div>
-                        <div class="col">          
-                          <div class="d-flex justify-content-start">
-                            <span class="mr-auto">School</span>
-                            <strong>mrperkins</strong>
-                          </div>
-                        </div>
-                      </div>
+                    <button class="btn btn-primary" type="submit" >Get Supply</button>
                   </div>
                   
-                  <br />
-                  <button type="button" class="btn btn-info mr-1 mb-1">Get  Supply</button>
                 </div>
-              </ng-template>
-            </ngb-tab>
-          </ngb-tabset>
+          </ng-container>
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ export const CatererRoutes: Routes = [
     }
   },
   {
-    path: 'view',
+    path: 'view/:id',
     component: ViewComponent,
     data: {
       heading: 'View Caterer',

@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Bank } from "../../models/bank";
 import { Lga } from "../../models/lga";
 import { CatererService } from "../../services/caterer";
-import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
+import { Caterer } from "../../models/caterer";
 
 @Component({
   selector: 'app-view',
@@ -17,24 +18,29 @@ export class ViewComponent implements OnInit {
   private supplier: any = {};
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
+  private caterer$: Observable<Caterer>;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private catererService: CatererService,
     private lgaService: LgaService
   ) { }
 
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
+    const that = this;
+    that.caterer$ = this.route.params
+       .switchMap((data) => this.catererService.getCaterer(data.id));
   }
   
   onSubmit() {
-    console.log(this.supplier);
-    this.catererService.createCaterer(this.supplier).subscribe((response) => {
-      // this.router.navigate( ['/'] );
-      console.info(response);
-    }, (reason) => {
-      console.warn(reason);
-    })
+    // console.log(this.supplier);
+    // this.catererService.createCaterer(this.supplier).subscribe((response) => {
+    //   // this.router.navigate( ['/'] );
+    //   console.info(response);
+    // }, (reason) => {
+    //   console.warn(reason);
+    // })
   }
 }

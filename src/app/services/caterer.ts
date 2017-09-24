@@ -12,12 +12,16 @@ export class CatererService {
     constructor(private http: HttpClient) { }
 
     createCaterer(caterer: Caterer): Observable<Caterer> {
-        return this.http.post<Caterer>(''.concat(environment.apiUrl, endpoints.CREATE_CATERER), caterer);
+        return this.http.post<Caterer>(''.concat(environment.apiUrl, endpoints.CATERER), caterer);
     }
 
     datatable(data: any): Observable<Array<Caterer>> {
         return this.http.post<ApiResponse>(''.concat(environment.apiUrl, endpoints.CATERER_DATATABLE), data)
         .map(response => response.data)
         .catch((reason)=>reason.error.data);
+    }
+    getCaterer(id: any): Observable<Caterer> {
+        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.CATERER,'?where={"id":"',id,'"}&populate=[bank]'))
+        .map(response => response.data[0]);
     }
 }

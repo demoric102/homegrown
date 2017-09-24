@@ -41,6 +41,14 @@ export class ListComponent implements OnInit {
             callback(response);
           });
       },
+      rowCallback: (row: Node, data: any[] | Object | any, index: number) => {
+        const self = this;
+        $('td', row).unbind('click');
+        $('td', row).bind('click', () => {
+          self.router.navigate(['/caterer/view',data.id])
+        });
+        return row;
+      },
       columns: [
         {
           data: 'firstname',
@@ -58,13 +66,8 @@ export class ListComponent implements OnInit {
           orderable: false,
         },
         {
-          data: 'lga.name',
-          width: '20%',
-          orderable: false,
-        },
-        {
           data: 'createdAt',
-          width: '20%',
+          width: '30%',
           orderable: true,
           render: function (data, type, row, meta: any) {
             return Moment(data).calendar(null, DATEFORMAT);

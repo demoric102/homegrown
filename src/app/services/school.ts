@@ -12,6 +12,6 @@ export class SchoolService {
     constructor(private http: HttpClient) { }
 
     getAll(): Observable<Array<School>> {
-        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.SCHOOL,"?sort=name ASC")).map(response => response.data);
+        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.SCHOOL,"?limit=null&sort=name ASC")).map(response => response.data);
     }
 }

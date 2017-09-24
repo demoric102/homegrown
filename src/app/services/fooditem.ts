@@ -11,6 +11,6 @@ export class FooditemService {
     constructor(private http: HttpClient) { }
 
     createCaterer(caterer: Caterer): Observable<Caterer> {
-        return this.http.post<Caterer>(''.concat(environment.apiUrl,endpoints.CREATE_CATERER), caterer);
+        return this.http.post<Caterer>(''.concat(environment.apiUrl,endpoints.CATERER), caterer);
     }
 }

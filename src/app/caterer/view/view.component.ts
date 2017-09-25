@@ -6,6 +6,7 @@ import { Lga } from "../../models/lga";
 import { CatererService } from "../../services/caterer";
 import { LgaService } from "../../services/lga";
 import { Caterer } from "../../models/caterer";
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-view',
@@ -13,6 +14,7 @@ import { Caterer } from "../../models/caterer";
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
+  closeResult: string;
   images: any[] = [];
   num = 1;
   private supplier: any = {};
@@ -24,8 +26,27 @@ export class ViewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private catererService: CatererService,
-    private lgaService: LgaService
+    private lgaService: LgaService,
+    private modalService: NgbModal
   ) { }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
@@ -43,4 +64,5 @@ export class ViewComponent implements OnInit {
     //   console.warn(reason);
     // })
   }
+    
 }

@@ -4,8 +4,10 @@
         <div class="card">
           <ng-container *ngIf="caterer$">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" >
                         Basic Information
+                          <button style="margin-left:770px;" class="btn btn-info" (click)="open(content)">Get Supply</button>
+                        
                       </div>
                   <div class="card-block">
                     <div class="row mb-2">
@@ -61,7 +63,6 @@
                         </div>
                       </div>
                     </div>
-                    <button class="btn btn-primary" type="submit" >Get Supply</button>
                   </div>
                   
                 </div>
@@ -70,3 +71,151 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Invoices
+            </div>
+
+            <div class="card-block">
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th width="10px">
+                                    #
+                                </th>
+                                <th colspan="3">
+                                    Name
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td colspan="3">
+                                    First Invoice
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                    </span> 2
+                                </td>
+                                <td>
+                                    Second Invoice
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                    </span> 3
+                                </td>
+                                <td>
+                                    Third Invoice
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template ngbModalContainer></ng-template>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title text-uppercase">Food Items</h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+          <div class="card">
+            <div class="card-block">
+              <div class="table-responsive">
+                <table class="table mb-0">
+                  <thead>
+                    <tr>
+                      <th>
+                        #
+                      </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Quantity
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td width="10px">
+                        <span>
+                        </span>
+                        1
+                      </td>
+                      <td>
+                        Indomie
+                      </td>
+                      <td>
+                        <input type="num">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="10px">
+                        <span>
+                        </span>
+                        2
+                      </td>
+                      <td>
+                        Rice
+                      </td>
+                      <td>
+                        <input type="num">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="10px">
+                        <span>
+                        </span>
+                        3
+                      </td>
+                      <td>
+                        Egg
+                      </td>
+                      <td>
+                        <input type="num">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="10px">
+                        <span>
+                        </span>
+                        4
+                      </td>
+                      <td>
+                        Bread
+                      </td>
+                      <td>
+                        <input type="num">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="c('Close click')">Generate Invoice</button>
+  </div>
+</ng-template>

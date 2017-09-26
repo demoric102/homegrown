@@ -38,9 +38,12 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
     this.banks$ = this.bankService.getAll();
-    this.schools$ = this.schoolService.getAll();
+    this.schools$ = null; //this.schoolService.getAll();
   }
   
+  selectSchools(lga){
+    this.schools$ = this.schoolService.getLga(lga);
+  }
   onSubmit() {
     let that = this;
     this.progressLoading = true;

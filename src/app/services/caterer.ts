@@ -15,6 +15,10 @@ export class CatererService {
         return this.http.post<Caterer>(''.concat(environment.apiUrl, endpoints.CATERER), caterer);
     }
 
+    editCaterer(caterer: Caterer): Observable<Caterer> {
+        return this.http.put<Caterer>(''.concat(environment.apiUrl, endpoints.CATERER,'/', caterer.id), caterer);
+    }
+
     datatable(data: any): Observable<Array<Caterer>> {
         return this.http.post<ApiResponse>(''.concat(environment.apiUrl, endpoints.CATERER_DATATABLE), data)
         .map(response => response.data)

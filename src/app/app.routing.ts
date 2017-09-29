@@ -25,6 +25,10 @@ export const AppRoutes: Routes = [{
     loadChildren: './invoice/invoice.module#InvoiceModule'
   },
   { 
+    path: 'user',
+    loadChildren: './user/user.module#UserModule'
+  },
+  { 
     path: 'fooditem',
     loadChildren: './fooditem/fooditem.module#FooditemModule'
   }, {

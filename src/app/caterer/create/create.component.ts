@@ -38,7 +38,8 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
     this.banks$ = this.bankService.getAll();
-    this.schools$ = null; //this.schoolService.getAll();
+    this.schools$ = null; 
+    this.schoolService.getAll();
   }
   
   selectSchools(lga){

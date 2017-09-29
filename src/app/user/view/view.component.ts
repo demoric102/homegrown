@@ -3,9 +3,9 @@ import { Observable } from "rxjs/Observable";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Bank } from "../../models/bank";
 import { Lga } from "../../models/lga";
-import { CatererService } from "../../services/caterer";
+import { UserService } from "../../services/user";
 import { LgaService } from "../../services/lga";
-import { Caterer } from "../../models/caterer";
+import { User } from "../../models/user";
 import { HttpErrorResponse } from "@angular/common/http";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,10 +19,10 @@ export class ViewComponent implements OnInit {
   images: any[] = [];
   num = 1;
   private supplier: any = {};
-  private caterer: any = {};
+  private user: any = {};
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
-  private caterer$: Observable<Caterer>;
+  private user$: Observable<User>;
   private progressLoading = false;
   private alert = {
     visible: false,
@@ -33,7 +33,7 @@ export class ViewComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private catererService: CatererService,
+    private userService: UserService,
     private lgaService: LgaService,
     private modalService: NgbModal
   ) { }
@@ -59,8 +59,8 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
     const that = this;
-    that.caterer$ = this.route.params
-       .switchMap((data) => this.catererService.getCaterer(data.id));
+    that.user$ = this.route.params
+       .switchMap((data) => this.userService.getUser(data.id));
   }
   
   onSubmit() {
@@ -71,9 +71,9 @@ export class ViewComponent implements OnInit {
       status: null,
       message: ''
     };
-    this.catererService.editCaterer(this.caterer)
+    this.userService.editUser(this.user)
     .subscribe((data) => {
-      that.caterer = {};
+      that.user = {};
       that.alert = {
         visible: true,
         status: 200,

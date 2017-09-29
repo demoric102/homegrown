@@ -1,0 +1,164 @@
+<div class="wrapper">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <ng-container *ngIf="user$">
+                <div class="card">
+                    <div class="card-header" >
+                        Basic Information
+                        
+                    </div>
+                  <div class="card-block">
+                      <ng-container *ngIf="progressLoading">
+                          <div class="loader02"></div>
+                        </ng-container>
+                    <div class="row mb-2">
+                      <div class="col">
+                        <div class="justify-content-start">   
+                          <div class="mr-auto">Names</div>
+                          <strong>{{(user$ | async)?.firstname}} {{(user$ | async)?.lastname}}</strong>
+                        </div>
+                      </div>
+                      <div class="col">          
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Address</div>
+                          <strong>{{(user$ | async)?.address}}</strong>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row mb-2">
+                      <div class="col">       
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Phone</div>
+                          <strong>{{(user$ | async)?.phone}}</strong>
+                        </div>
+                      </div>
+                      <div class="col">          
+                        <div class="justify-content-start">
+                          <div class="mr-auto">School Name</div>
+                          <strong>{{(user$ | async)?.school}}</strong>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row mb-2">
+                      <div class="col">          
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Email</div>
+                          <strong>{{(user$ | async)?.email}}</strong>
+                        </div>
+                      </div>
+                      <div class="col">          
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Account Number</div>
+                          <strong>{{(user$ | async)?.accountNumber}}</strong>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row mb-2">
+                      <div class="col">          
+                        <div class="justify-content-start">
+                          <div class="mr-auto">Bank Name</div>
+                          <strong>{{(user$ | async)?.bank}}</strong>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-info" (click)="open(editUser)">Edit User</button>
+                  </div>
+                </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<ng-template ngbModalContainer></ng-template>
+<ng-template #editUser let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title text-uppercase">Edit user</h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #edituser="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+          <div class="card">
+            <div class="card-block">
+              <div class="table-responsive">
+                <table class="table mb-0">
+                  <ng-container *ngIf="user$">
+                  <tbody>
+                    <tr>
+                      <td>
+                        First Name
+                      </td>
+                      <td>
+                        <input type="text" value="{{(user$ | async)?.firstname}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Last name
+                      </td>
+                      <td>
+                        <input type="text" value="{{(user$ | async)?.lastname}}">
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          Phone Number
+                        </td>
+                        <td>
+                          <input type="text" value="{{(user$ | async)?.phone}}">
+                        </td>
+                      </tr>
+                    <tr>
+                      <td>
+                        Address
+                      </td>
+                      <td>
+                        <textarea name="" rows="4" value="{{(user$ | async)?.address}}"></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          Email
+                        </td>
+                        <td>
+                          <input type="text" value="{{(user$ | async)?.email}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          Bank
+                        </td>
+                        <td>
+                          <input type="text" value="{{(user$ | async)?.bank}}">
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Account Number
+                          </td>
+                          <td>
+                            <input type="text" value="{{(user$ | async)?.accountNumber}}">
+                          </td>
+                        </tr>
+                  </tbody>
+                  </ng-container>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-info">Save Changes</button>
+  </div>
+</form>
+</ng-template>

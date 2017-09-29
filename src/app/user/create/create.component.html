@@ -1,0 +1,161 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        Create User
+      </div>
+      <div class="card-block">
+        <ng-container *ngIf="progressLoading">
+          <div class="loader02"></div>
+        </ng-container>
+        <form #createUser="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
+          <div class="alert" [class.alert-success]="alert.status == 200" [class.alert-danger]="alert.status == 400" role="alert" *ngIf="alert.visible">
+            <strong>Oh snap!</strong> {{alert.message}}.
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="firstname.errors && firstname.touched">
+                <label for="firstname">
+                      First Name
+                    </label>
+                <input type="text" class="form-control" placeholder="First Name" name="firstname" #firstname="ngModel" [(ngModel)]="user.firstname"
+                  minlength="2" required/>
+                <div class="form-control-feedback" *ngIf="firstname.errors && firstname.touched">
+                  <small [hidden]="!firstname.errors.required">
+                    First name is required.
+                  </small>
+                  <small [hidden]="!firstname.errors.minlength">
+                    Min characters is 2
+                  </small>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="lastname.errors && lastname.touched">
+                <label for="lastname">
+                  Last Name
+                </label>
+                <input type="text" class="form-control" placeholder="Last Name" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname"
+                  minlength="2" required/>
+                <div class="form-control-feedback" *ngIf="lastname.errors && lastname.touched">
+                  <small [hidden]="!lastname.errors.required">
+                    Last name is required.
+                  </small>
+                  <small [hidden]="!lastname.errors.minlength">
+                    Min characters is 2
+                  </small>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="phone.errors && phone.touched">
+                <label for="phone">
+                  Phone Number
+                </label>
+                <input type="text" class="form-control" placeholder="Phone" name="Phone" #phone="ngModel" [(ngModel)]="user.phone" minlength="11"
+                  maxlength="15" required/>
+                <div class="form-control-feedback" *ngIf="phone.errors && phone.touched">
+                  <small [hidden]="!phone.errors.required">
+                    Your Phone Number is required.
+                  </small>
+                  <small [hidden]="!phone.errors.minlength">
+                    Min characters is 11
+                  </small>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="email.errors && email.touched">
+                <label for="email">
+                  Email
+                </label>
+                <input type="text" class="form-control" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="user.email" minlength="5"
+                  required/>
+                <div class="form-control-feedback" *ngIf="email.errors && email.touched">
+                  <small [hidden]="!email.errors.required">
+                    Your Email is required.
+                  </small>
+                  <small [hidden]="!email.errors.minlength">
+                    Min characters is 5
+                  </small>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <fieldset class="form-group" [class.has-danger]="address.errors && address.touched">
+            <label for="address">
+                  Address
+                </label>
+            <textarea class="form-control" placeholder="Address" name="address" #address="ngModel" [(ngModel)]="user.address" minlength="20"
+              required>
+                </textarea>
+            <div class="form-control-feedback" *ngIf="address.errors && address.touched">
+              <small [hidden]="!address.errors.required">
+                    Your Address is required.
+                  </small>
+              <small [hidden]="!address.errors.minlength">
+                    Min characters is 20
+                  </small>
+            </div>
+          </fieldset>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="password.errors && password.touched">
+                <label for="password">
+                 Password
+                </label>
+                <input type="password" class="form-control" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="user.password"
+                  minlength="8" required/>
+                <div class="form-control-feedback" *ngIf="password.errors && password.touched">
+                  <small [hidden]="!password.errors.required">
+                    Password
+                  </small>
+                  <small [hidden]="!password.errors.minlength">
+                    Min characters is 8
+                  </small>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="passwordAgain.errors && passwordAgain.touched">
+                <label for="passwordAgain">
+                Password Again
+              </label>
+              <input type="password" class="form-control" placeholder="Password Again" name="passwordAgain" #passwordAgain="ngModel" [(ngModel)]="user.passwordAgain" minlength="5"
+              required/>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="role.errors && role.touched">
+                <label for="role">
+                  Role
+                </label>
+                <select name="role" class="form-control" #role="ngModel" [(ngModel)]="user.role" (change)="selectSchools(user.role);">
+                  <option disabled selected></option>
+                  <option *ngFor="let role of (role$ | async)" [value]="role.id">{{role?.name}}</option>
+                </select>
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset class="form-group" [class.has-danger]="lga.errors && lga.touched">
+                <label for="lga">
+                  Local Govt. Area
+                </label>
+                <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="user.lga" (change)="selectSchools(user.lga);">
+                  <option disabled selected></option>
+                  <option *ngFor="let lga of (lga$ | async)" [value]="lga.id">{{lga?.name}}</option>
+                </select>
+              </fieldset>
+            </div>
+          </div>
+          <div class="block mb-3"></div>
+          <button class="btn btn-primary" type="submit" [disabled]="!createUser.valid">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

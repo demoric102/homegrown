@@ -13,7 +13,7 @@ import { LgaService } from "../../services/lga";
 })
 export class CreateComponent implements OnInit {
   fooditemService: any;
-  private zone: any = {};
+  private fooditem: any = {};
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
 
@@ -28,8 +28,8 @@ export class CreateComponent implements OnInit {
   }
   
   onSubmit() {
-    console.log(this.zone);
-    this.fooditemService.createFooditem(this.zone).subscribe((response) => {
+    console.log(this.fooditem);
+    this.fooditemService.createFooditem(this.fooditem).subscribe((response) => {
       // this.router.navigate( ['/'] );
       console.info(response);
     }, (reason) => {

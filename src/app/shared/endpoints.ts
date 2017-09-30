@@ -3,6 +3,8 @@ export const endpoints = {
     USER: 'user',
     CATERER: 'caterer',
     SCHOOL: 'school',
+    FOOD: 'food',
+    FOOD_DATATABLE: 'food/datatable',
     CATERER_DATATABLE: 'caterer/datatable',
     SUPPLIER_DATATABLE: 'supplier/datatable',
     USER_DATATABLE: 'user/datatable',

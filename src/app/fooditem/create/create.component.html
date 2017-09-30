@@ -2,7 +2,7 @@
   <div class="col-lg-6">
     <div class="card">
       <div class="card-header">
-        Create Zone
+        Create Food Item
       </div>
       <div class="card-block">
         <form #createForm="ngForm" (ngSubmit)="bvnModal.open()">
@@ -12,11 +12,11 @@
                 <label for="name">
                       Name
                     </label>
-                <input type="text" class="form-control" placeholder="First Name" name="name" #name="ngModel" [(ngModel)]="zone.name" minlength="2"
+                <input type="text" class="form-control" placeholder="First Name" name="name" #name="ngModel" [(ngModel)]="food.name" minlength="2"
                   required/>
                 <div class="form-control-feedback" *ngIf="name.errors && name.touched">
                   <small [hidden]="!name.errors.required">
-                    LGA Name is required.
+                    Name is required.
                   </small>
                   <small [hidden]="!name.errors.minlength">
                     Min characters is 2
@@ -25,18 +25,17 @@
               </fieldset>
             </div>
             <div class="col-md-12">
-              <fieldset class="form-group" [class.has-danger]="description.errors && description.touched">
-                <label for="description">
-                      Description
+              <fieldset class="form-group" [class.has-danger]="unitPrice.errors && unitPrice.touched">
+                <label for="unitPrice">
+                      Unit Price
                     </label>
-                <textarea class="form-control" placeholder="Description" name="description" #description="ngModel" [(ngModel)]="zone.description"
-                  minlength="20" required>
-                    </textarea>
-                <div class="form-control-feedback" *ngIf="description.errors && description.touched">
-                  <small [hidden]="!description.errors.required">
-                        Your description is required.
+                <input type="number" class="form-control" placeholder="Unit Price" name="unitPrice" #unitPrice="ngModel" [(ngModel)]="food.unitPrice"
+                  required>
+                <div class="form-control-feedback" *ngIf="unitPrice.errors && unitPrice.touched">
+                  <small [hidden]="!unitPrice.errors.required">
+                        Your Unit Price is required.
                       </small>
-                  <small [hidden]="!description.errors.minlength">
+                  <small [hidden]="!unitPrice.errors.minlength">
                         Min characters is 20
                       </small>
                 </div>

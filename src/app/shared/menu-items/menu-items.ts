@@ -60,6 +60,22 @@ const MENUITEMS = [
     ]
   },
   {
+    state: 'fooditem',
+    name: 'FOODITEM',
+    type: 'sub',
+    icon: 'basic-paperplane',
+    children: [
+      {
+        state: 'create',
+        name: 'CREATE'
+      },
+      {
+        state: 'list',
+        name: 'LIST'
+      }
+    ]
+  },
+  {
     state: 'caterer',
     name: 'CATERER',
     type: 'sub',

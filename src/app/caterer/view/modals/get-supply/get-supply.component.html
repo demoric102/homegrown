@@ -1,0 +1,61 @@
+<ng-template ngbModalContainer>
+</ng-template>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title text-uppercase">Invoice</h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-block p-0">
+            <div class="table-responsive">
+              <table class="table mb-0 table-no-border">
+                <tbody>
+                  <tr *ngFor="let food of (foods$ | async)">
+                    <td class="px-0 border-0" width="70%">
+                      {{food?.name}}
+                    </td>
+                    <td class="px-0 border-0">
+                      <input type="number" class="form-control" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <form class="form-inline">
+      <div class="form-group mx-sm-3">
+        <div class="row">
+          <div class="col-4">
+            <label class="sr-only" for="supplier">Supplier</label>
+            <select name="supplier" class="form-control mb-2 mr-sm-2 mb-sm-0" #supplier="ngModel" [(ngModel)]="invoice.supplier" (change)="selectSchools(invoice.supplier);">
+        <option disabled selected></option>
+        <option *ngFor="let supplier of (suppliers$ | async)" [value]="supplier.id">{{supplier?.name}}</option>
+      </select>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="c('Close click')">Generate</button>
+    </form>
+    <!-- <div class="float-sm-left">
+      <fieldset class="form-group" [class.has-danger]="supplier.errors && supplier.touched">
+        <label for="supplier">
+          Local Govt. Area
+        </label>
+    <select name="supplier" class="form-control" #supplier="ngModel" [(ngModel)]="invoice.supplier" (change)="selectSchools(invoice.supplier);">
+          <option disabled selected></option>
+          <option *ngFor="let supplier of (suppliers$ | async)" [value]="supplier.id">{{supplier?.name}}</option>
+        </select>
+    </fieldset>
+  </div> -->
+  </div>
+</ng-template>

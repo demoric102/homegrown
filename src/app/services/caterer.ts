@@ -21,7 +21,7 @@ export class CatererService {
         .catch((reason)=>reason.error.data);
     }
     getCaterer(id: any): Observable<Caterer> {
-        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.CATERER,'?where={"id":"',id,'"}&populate=[bank]'))
+        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.CATERER,'?where={"id":"',id,'"}&populate=[school,bankaccount,lga]'))
         .map(response => response.data[0]);
     }
 }

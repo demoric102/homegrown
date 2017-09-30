@@ -9,13 +9,15 @@ module.exports = {
 
   attributes: {
     caterer: {
-      model: 'Caterer',
-      required: true
+      model: 'Caterer'
     },
     accountNumber: {
       type: 'string',
       unique: true,
       required: true
+    },
+    bank: {
+      model: 'Bank'
     },
     bvn: {
       type: 'string',

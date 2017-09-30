@@ -22,6 +22,7 @@ import { BankService } from "./services/bank";
 import { FooditemService } from "./services/fooditem";
 import { SupplierService } from "./services/supplier";
 import { SchoolService } from "./services/school";
+import { FoodService } from './services/food';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -57,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     BvnService,
     BankService,
     SchoolService,
+    FoodService,
     FooditemService,
     SupplierService
   ],

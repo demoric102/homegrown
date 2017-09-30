@@ -12,6 +12,7 @@ import { ListComponent } from "./list/list.component";
 import { CatererRoutes } from "./caterer.routing";
 import { ViewComponent } from "./view/view.component";
 import { DataTablesModule } from 'angular-datatables';
+import { GetSupplyModalComponent } from './view/modals/get-supply/get-supply.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { DataTablesModule } from 'angular-datatables';
     DataTablesModule,
     NgbTabsetModule
   ],
-  declarations: [CreateComponent,ListComponent, ViewComponent]
+  declarations: [CreateComponent,ListComponent, ViewComponent, GetSupplyModalComponent]
 })
 
 export class CatererModule {}

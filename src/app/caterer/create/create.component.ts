@@ -9,6 +9,7 @@ import { BankService } from "../../services/bank";
 import { SchoolService } from "../../services/school";
 import { HttpErrorResponse } from "@angular/common/http";
 import { School } from "../../models/school";
+import { Caterer } from '../../models/caterer';
 
 @Component({
   selector: 'app-create',
@@ -16,7 +17,7 @@ import { School } from "../../models/school";
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  private caterer: any = {};
+  private caterer: any = new Caterer();
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
   private schools$: Observable<Array<School>>;
@@ -55,7 +56,7 @@ export class CreateComponent implements OnInit {
     };
     this.catererService.createCaterer(this.caterer)
     .subscribe((data) => {
-      that.caterer = {};
+      that.caterer = new Caterer();
       that.alert = {
         visible: true,
         status: 200,

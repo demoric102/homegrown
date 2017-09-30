@@ -1,7 +1,6 @@
 import { BankAccount } from "./bankAccount";
 import { School } from "./school";
-import { Zone } from "./zone"; 
-
+import { Lga } from "./lga";
 
 export class Caterer {
     id: string;
@@ -9,7 +8,8 @@ export class Caterer {
     lastname: string;
     address: string;
     phone: string;
+    email: string;
     school: School;
-    zone: Zone;
-    bankAccount: BankAccount;
+    lga: Lga;
+    bankAccount: BankAccount = new BankAccount();
 }

@@ -34,17 +34,8 @@ export class ViewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private catererService: CatererService,
-    private lgaService: LgaService,
-    private modalService: NgbModal
+    private lgaService: LgaService
   ) { }
-
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

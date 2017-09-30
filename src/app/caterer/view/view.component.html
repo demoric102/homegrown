@@ -1,315 +1,139 @@
+<ng-container *ngIf="(caterer$ | async); let caterer">
 <div class="wrapper">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card">
-          <ng-container *ngIf="caterer$">
-                <div class="card">
-                    <div class="card-header" >
-                        Basic Information
-                        
-                    </div>
-                    <div  style="margin-right:30px; margin-top:5px" >
-                      <button class="btn btn-info float-sm-right" (click)="open(content)">Get Supply</button>
-                    </div>
-                  <div class="card-block">
-                      <ng-container *ngIf="progressLoading">
-                          <div class="loader02"></div>
-                        </ng-container>
-                    <div class="row mb-2">
-                      <div class="col">
-                        <div class="justify-content-start">   
-                          <div class="mr-auto">Names</div>
-                          <strong>{{(caterer$ | async)?.firstname}} {{(caterer$ | async)?.lastname}}</strong>
-                        </div>
-                      </div>
-                      <div class="col">          
-                        <div class="justify-content-start">
-                          <div class="mr-auto">Address</div>
-                          <strong>{{(caterer$ | async)?.address}}</strong>
-                        </div>
-                      </div>
-                    </div>
-  
-                    <div class="row mb-2">
-                      <div class="col">       
-                        <div class="justify-content-start">
-                          <div class="mr-auto">Phone</div>
-                          <strong>{{(caterer$ | async)?.phone}}</strong>
-                        </div>
-                      </div>
-                      <div class="col">          
-                        <div class="justify-content-start">
-                          <div class="mr-auto">School Name</div>
-                          <strong>{{(caterer$ | async)?.school}}</strong>
-                        </div>
-                      </div>
-                    </div>
-  
-                    <div class="row mb-2">
-                      <div class="col">          
-                        <div class="justify-content-start">
-                          <div class="mr-auto">Email</div>
-                          <strong>{{(caterer$ | async)?.email}}</strong>
-                        </div>
-                      </div>
-                      <div class="col">          
-                        <div class="justify-content-start">
-                          <div class="mr-auto">Account Number</div>
-                          <strong>{{(caterer$ | async)?.accountNumber}}</strong>
-                        </div>
-                      </div>
-                    </div>
-  
-                    <div class="row mb-2">
-                      <div class="col">          
-                        <div class="justify-content-start">
-                          <div class="mr-auto">Bank Name</div>
-                          <strong>{{(caterer$ | async)?.bank}}</strong>
-                        </div>
-                      </div>
-                    </div>
-                    <button class="btn btn-info" (click)="open(editCaterer)">Edit Caterer</button>
-                  </div>
-                </div>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="row">
     <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">
-                Invoices
+      <div class="card">
+        <ng-container *ngIf="caterer$">
+          <div class="card-header">
+            Basic Information
+            <span class="mr-auto"></span>
+            <div class="card-controls">
+              <a href="javascript:;" (click)="editCatererModal.open()">
+                <i class="icon icon-software-pencil"></i>
+              </a>
             </div>
-
-            <div class="card-block">
-                <div class="table-responsive">
-                    <table class="table mb-0">
-                        <thead>
-                            <tr>
-                                <th width="10px">
-                                    #
-                                </th>
-                                <th colspan="3">
-                                    Name
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td colspan="3">
-                                    First Invoice
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span>
-                                    </span> 2
-                                </td>
-                                <td>
-                                    Second Invoice
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span>
-                                    </span> 3
-                                </td>
-                                <td>
-                                    Third Invoice
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+          </div>
+          <div class="card-block">
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Names</div>
+                  <strong>{{caterer?.firstname}} {{caterer?.lastname}}</strong>
                 </div>
+              </div>
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Address</div>
+                  <strong>{{caterer?.address}}</strong>
+                </div>
+              </div>
             </div>
-        </div>
+
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Phone</div>
+                  <strong>{{caterer?.phone}}</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">School Name</div>
+                  <strong>{{caterer?.school.name}}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Email</div>
+                  <strong>{{caterer?.email}}</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Account Number</div>
+                  <strong>{{caterer?.bankAccount.accountNumber}}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Bank Name</div>
+                  <strong>{{caterer?.bank?.name}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
     </div>
+  </div>
 </div>
-
-<ng-template ngbModalContainer></ng-template>
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h6 class="modal-title text-uppercase">Food Items</h6>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-sm-12">
-          <div class="card">
-            <div class="card-block">
-              <div class="table-responsive">
-                <table class="table mb-0">
-                  <thead>
-                    <tr>
-                      <th>
-                        #
-                      </th>
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        Quantity
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td width="10px">
-                        <span>
-                        </span>
-                        1
-                      </td>
-                      <td>
-                        Indomie
-                      </td>
-                      <td>
-                        <input type="num">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="10px">
-                        <span>
-                        </span>
-                        2
-                      </td>
-                      <td>
-                        Rice
-                      </td>
-                      <td>
-                        <input type="num">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="10px">
-                        <span>
-                        </span>
-                        3
-                      </td>
-                      <td>
-                        Egg
-                      </td>
-                      <td>
-                        <input type="num">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="10px">
-                        <span>
-                        </span>
-                        4
-                      </td>
-                      <td>
-                        Bread
-                      </td>
-                      <td>
-                        <input type="num">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        Invoice
+        <span class="mr-auto"></span>
+        <div class="card-controls">
+          <a href="javascript:;" (click)="getSupplyModal.open()">
+            <i class="icon icon-arrows-plus"></i>
+          </a>
+        </div>
       </div>
-  </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="c('Close click')">Generate Invoice</button>
-  </div>
-</ng-template>
 
-<ng-template ngbModalContainer></ng-template>
-<ng-template #editCaterer let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h6 class="modal-title text-uppercase">Edit Caterer</h6>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <form #editCaterer="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-sm-12">
-          <div class="card">
-            <div class="card-block">
-              <div class="table-responsive">
-                <table class="table mb-0">
-                  <ng-container *ngIf="caterer$">
-                  <tbody>
-                    <tr>
-                      <td>
-                        First Name
-                      </td>
-                      <td>
-                        <input type="text" value="{{(caterer$ | async)?.firstname}}">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Last name
-                      </td>
-                      <td>
-                        <input type="text" value="{{(caterer$ | async)?.lastname}}">
-                      </td>
-                    </tr>
-                    <tr>
-                        <td>
-                          Phone Number
-                        </td>
-                        <td>
-                          <input type="text" value="{{(caterer$ | async)?.phone}}">
-                        </td>
-                      </tr>
-                    <tr>
-                      <td>
-                        Address
-                      </td>
-                      <td>
-                        <textarea name="" rows="4" value="{{(caterer$ | async)?.address}}"></textarea>
-                      </td>
-                    </tr>
-                    <tr>
-                        <td>
-                          Email
-                        </td>
-                        <td>
-                          <input type="text" value="{{(caterer$ | async)?.email}}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                          Bank
-                        </td>
-                        <td>
-                          <input type="text" value="{{(caterer$ | async)?.bank}}">
-                        </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Account Number
-                          </td>
-                          <td>
-                            <input type="text" value="{{(caterer$ | async)?.accountNumber}}">
-                          </td>
-                        </tr>
-                  </tbody>
-                  </ng-container>
-                </table>
-              </div>
-            </div>
-          </div>
+      <div class="card-block">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th width="10px">
+                  #
+                </th>
+                <th colspan="3">
+                  Name
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  1
+                </td>
+                <td colspan="3">
+                  First Invoice
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>
+                                    </span> 2
+                </td>
+                <td>
+                  Second Invoice
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>
+                                    </span> 3
+                </td>
+                <td>
+                  Third Invoice
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
   </div>
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-info">Save Changes</button>
-  </div>
-</form>
-</ng-template>
+</div>
+<get-supply #getSupplyModal [lga]="caterer?.lga?.id"></get-supply>
+<edit-caterer #editCatererModal [caterer]="caterer?.id"></edit-caterer>
+</ng-container>
+

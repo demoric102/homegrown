@@ -106,7 +106,7 @@
                 <label for="accountNumber">
                   Account Number
                 </label>
-                <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="caterer.accountNumber"
+                <input type="text" class="form-control" placeholder="Account Number" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="caterer.bankAccount.accountNumber"
                   minlength="10" required/>
                 <div class="form-control-feedback" *ngIf="accountNumber.errors && accountNumber.touched">
                   <small [hidden]="!accountNumber.errors.required">
@@ -123,7 +123,7 @@
                 <label for="bank">
                 Bank
               </label>
-                <select name="bank" class="form-control" #bank="ngModel" [(ngModel)]="caterer.bank">
+                <select name="bank" class="form-control" #bank="ngModel" [(ngModel)]="caterer.bankAccount.bank">
                     <option disabled selected></option>
                 <option *ngFor="let bank of (banks$ | async)" [value]="bank.id">{{bank?.name}}</option>
             </select>

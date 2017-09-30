@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  schema: true,
   attributes: {
     firstname: {
       type: 'string',
@@ -25,11 +25,14 @@ module.exports = {
       unique: true,
       required: true
     },
+    email: {
+      type: 'string',
+    },
     school: {
       model: 'School'
     },
-    zone: {
-      model: 'Zone'
+    lga: {
+      model: 'lga'
     },
     bankAccount: {
       model: 'BankAccount'

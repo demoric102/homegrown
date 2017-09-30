@@ -1,26 +1,28 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Bank } from "../../models/bank";
 import { Lga } from "../../models/lga";
-import { CatererService } from "../../services/caterer";
-import { Router } from "@angular/router";
+import { UserService } from "../../services/user";
 import { LgaService } from "../../services/lga";
-import { BankService } from "../../services/bank";
-import { SchoolService } from "../../services/school";
+import { User } from "../../models/user";
 import { HttpErrorResponse } from "@angular/common/http";
-import { School } from "../../models/school";
-import { Caterer } from '../../models/caterer';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.scss']
 })
-export class CreateComponent implements OnInit {
-  private caterer: any = new Caterer();
+export class ViewComponent implements OnInit {
+  closeResult: string;
+  images: any[] = [];
+  num = 1;
+  private supplier: any = {};
+  private user: any = {};
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
-  private schools$: Observable<Array<School>>;
+  private user$: Observable<User>;
   private progressLoading = false;
   private alert = {
     visible: false,
@@ -30,22 +32,37 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private catererService: CatererService,
+    private route: ActivatedRoute,
+    private userService: UserService,
     private lgaService: LgaService,
-    private schoolService: SchoolService,
-    private bankService: BankService
+    private modalService: NgbModal
   ) { }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
-    this.banks$ = this.bankService.getAll();
-    this.schools$ = null; 
-    this.schoolService.getAll();
+    const that = this;
+    that.user$ = this.route.params
+       .switchMap((data) => this.userService.getUser(data.id));
   }
   
-  selectSchools(lga){
-    this.schools$ = this.schoolService.getLga(lga);
-  }
   onSubmit() {
     let that = this;
     this.progressLoading = true;
@@ -54,13 +71,13 @@ export class CreateComponent implements OnInit {
       status: null,
       message: ''
     };
-    this.catererService.createCaterer(this.caterer)
+    this.userService.editUser(this.user)
     .subscribe((data) => {
-      that.caterer = new Caterer();
+      that.user = {};
       that.alert = {
         visible: true,
         status: 200,
-        message: ''.concat('A new caterer has been created.')
+        message: ''.concat('The modifications have been made.')
       };
       that.progressLoading = false;
       console.info(data);
@@ -82,6 +99,6 @@ export class CreateComponent implements OnInit {
     }, () => {
       that.progressLoading = false;
     });
-    
   }
+    
 }

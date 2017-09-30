@@ -8,13 +8,10 @@
             Basic Information
             <span class="mr-auto"></span>
             <div class="card-controls">
-              <a href="javascript:;" (click)="changeColor()">
+              <a href="javascript:;" (click)="editCatererModal.open()">
                 <i class="icon icon-software-pencil"></i>
               </a>
             </div>
-            <!-- <div class="card-controls">
-              <button class="btn btn-info pull-right" (click)="open(content)">Get Supply</button>
-            </div> -->
           </div>
           <div class="card-block">
             <div class="row mb-2">
@@ -136,5 +133,7 @@
     </div>
   </div>
 </div>
-  <get-supply #getSupplyModal [lga]="caterer?.lga?.id"></get-supply>
+<get-supply #getSupplyModal [lga]="caterer?.lga?.id"></get-supply>
+<edit-caterer #editCatererModal [caterer]="caterer?.id"></edit-caterer>
 </ng-container>
+

@@ -3,6 +3,7 @@ import { School } from "./school";
 import { Lga } from "./lga";
 
 export class Caterer {
+    id: string;
     firstname: string;
     lastname: string;
     address: string;

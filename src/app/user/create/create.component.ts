@@ -2,14 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Bank } from "../../models/bank";
 import { Lga } from "../../models/lga";
-import { CatererService } from "../../services/caterer";
+import { UserService } from "../../services/user";
 import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
 import { BankService } from "../../services/bank";
 import { SchoolService } from "../../services/school";
 import { HttpErrorResponse } from "@angular/common/http";
 import { School } from "../../models/school";
-import { Caterer } from '../../models/caterer';
 
 @Component({
   selector: 'app-create',
@@ -17,9 +16,10 @@ import { Caterer } from '../../models/caterer';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  private caterer: any = new Caterer();
+  private user: any = {};
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
+  private lga$: Observable<Array<Lga>>;
   private schools$: Observable<Array<School>>;
   private progressLoading = false;
   private alert = {
@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private catererService: CatererService,
+    private userService: UserService,
     private lgaService: LgaService,
     private schoolService: SchoolService,
     private bankService: BankService
@@ -54,13 +54,13 @@ export class CreateComponent implements OnInit {
       status: null,
       message: ''
     };
-    this.catererService.createCaterer(this.caterer)
+    this.userService.createUser(this.user)
     .subscribe((data) => {
-      that.caterer = new Caterer();
+      that.user = {};
       that.alert = {
         visible: true,
         status: 200,
-        message: ''.concat('A new caterer has been created.')
+        message: ''.concat('A new user has been created.')
       };
       that.progressLoading = false;
       console.info(data);

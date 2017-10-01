@@ -17,7 +17,10 @@ export class GetSupplyModalComponent implements OnInit {
   private content: NgbModal;
   @Input()
   private lga;
-  private invoice = {};
+  private foodItems = [];
+  private invoice = {
+    foodItems: []
+  };
 
   constructor(
     private modalService: NgbModal,
@@ -26,12 +29,14 @@ export class GetSupplyModalComponent implements OnInit {
   ) {
 
   }
+
   ngOnInit(): void {
-    this.suppliers$ = this.supplierService.getLga(this.lga);
+    this.suppliers$ = this.supplierService.getWhereLga(this.lga);
     this.foods$ = this.foodService.getAll();
-    // throw new Error("Method not implemented.");
   }
-  onSubmit() {
+
+  generateInvoice() {
+    console.log(this.invoice);
     // this.catererService.createCaterer(this.supplier).subscribe((response) => {
     //   // this.router.navigate( ['/'] );
     //   console.info(response);
@@ -39,6 +44,7 @@ export class GetSupplyModalComponent implements OnInit {
     //   console.warn(reason);
     // })
   }
+  
   open() {
     this.modalService.open(this.content).result.then((result) => {
     }, (reason) => {

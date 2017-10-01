@@ -13,6 +13,7 @@ import { CatererRoutes } from "./caterer.routing";
 import { ViewComponent } from "./view/view.component";
 import { DataTablesModule } from 'angular-datatables';
 import { GetSupplyModalComponent } from './view/modals/get-supply/get-supply.component';
+import { EditCatererModalComponent } from './view/modals/edit-caterer/edit-caterer.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { GetSupplyModalComponent } from './view/modals/get-supply/get-supply.com
     DataTablesModule,
     NgbTabsetModule
   ],
-  declarations: [CreateComponent,ListComponent, ViewComponent, GetSupplyModalComponent]
+  declarations: [CreateComponent,ListComponent, ViewComponent, GetSupplyModalComponent, EditCatererModalComponent]
 })
 
 export class CatererModule {}

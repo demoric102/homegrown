@@ -8,8 +8,8 @@
 module.exports = {
 
   attributes: {
-    name: {
-      type: 'string'
+    food: {
+      model: 'food'
     },
     quantity: {
       type: 'float',

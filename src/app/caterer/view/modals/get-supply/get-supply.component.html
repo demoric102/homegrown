@@ -32,30 +32,19 @@
     </div>
   </div>
   <div class="modal-footer">
-    <form class="form-inline">
+    <form class="form-inline" #invoiceForm="ngForm" (ngSubmit)="generateInvoice()">
       <div class="form-group mx-sm-3">
         <div class="row">
           <div class="col-4">
             <label class="sr-only" for="supplier">Supplier</label>
-            <select name="supplier" class="form-control mb-2 mr-sm-2 mb-sm-0" #supplier="ngModel" [(ngModel)]="invoice.supplier">
-        <option disabled selected></option>
-        <option *ngFor="let supplier of (suppliers$ | async)" [value]="supplier.id">{{supplier?.fullname}}</option>
-      </select>
+            <select name="supplier" class="form-control mb-2 mr-sm-2 mb-sm-0" #supplier="ngModel" [(ngModel)]="invoice.supplier" required>
+              <option disabled selected></option>
+              <option *ngFor="let supplier of (suppliers$ | async)" [value]="supplier.id">{{supplier?.fullname}}</option>
+            </select>
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" (click)="generateInvoice()">Generate</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!invoiceForm.valid">Generate</button>
     </form>
-    <!-- <div class="float-sm-left">
-      <fieldset class="form-group" [class.has-danger]="supplier.errors && supplier.touched">
-        <label for="supplier">
-          Local Govt. Area
-        </label>
-    <select name="supplier" class="form-control" #supplier="ngModel" [(ngModel)]="invoice.supplier" (change)="selectSchools(invoice.supplier);">
-          <option disabled selected></option>
-          <option *ngFor="let supplier of (suppliers$ | async)" [value]="supplier.id">{{supplier?.name}}</option>
-        </select>
-    </fieldset>
-  </div> -->
   </div>
 </ng-template>

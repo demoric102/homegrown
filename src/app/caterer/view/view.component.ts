@@ -53,43 +53,5 @@ export class ViewComponent implements OnInit {
     that.caterer$ = this.route.params
        .switchMap((data) => this.catererService.getCaterer(data.id));
   }
-  
-  onSubmit() {
-    let that = this;
-    this.progressLoading = true;
-    that.alert = {
-      visible: false,
-      status: null,
-      message: ''
-    };
-    this.catererService.editCaterer(this.caterer)
-    .subscribe((data) => {
-      that.caterer = {};
-      that.alert = {
-        visible: true,
-        status: 200,
-        message: ''.concat('The modifications have been made.')
-      };
-      that.progressLoading = false;
-      console.info(data);
-    }, (error: HttpErrorResponse) => {
-      that.progressLoading = false;
-      if (error.error instanceof Error) {
-        that.alert = {
-          visible: true,
-          status: error.status,
-          message: ''.concat('An error occurred:', error.error.message)
-        };
-      } else {
-        that.alert = {
-          visible: true,
-          status: error.status,
-          message: ''.concat('An error occurred:', error.error.data.invalidAttributes[Object.keys(error.error.data.invalidAttributes)[0]][0].message)
-        };
-      }
-    }, () => {
-      that.progressLoading = false;
-    });
-  }
     
 }

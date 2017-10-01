@@ -18,14 +18,6 @@ export const FooditemRoutes: Routes = [
       heading: 'List Suppliers',
       removeFooter: true
     }
-  },
-  {
-    path: 'match',
-    component: MatchComponent,
-    data: {
-      heading: 'Match Zone',
-      removeFooter: true
-    }
   }
 
 ];

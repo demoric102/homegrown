@@ -5,14 +5,20 @@
         Create Food Item
       </div>
       <div class="card-block">
-        <form #createForm="ngForm" (ngSubmit)="bvnModal.open()">
+          <ng-container *ngIf="progressLoading">
+            <div class="loader02"></div>
+          </ng-container>
+        <form #createForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="alert" [class.alert-success]="alert.status == 200" [class.alert-danger]="alert.status == 400" role="alert" *ngIf="alert.visible">
+            <strong>Oh snap!</strong> {{alert.message}}.
+          </div>
           <div class="row">
             <div class="col-md-12">
               <fieldset class="form-group" [class.has-danger]="name.errors && name.touched">
                 <label for="name">
                       Name
                     </label>
-                <input type="text" class="form-control" placeholder="First Name" name="name" #name="ngModel" [(ngModel)]="food.name" minlength="2"
+                <input type="text" class="form-control" placeholder="Name" name="name" #name="ngModel" [(ngModel)]="food.name" minlength="2"
                   required/>
                 <div class="form-control-feedback" *ngIf="name.errors && name.touched">
                   <small [hidden]="!name.errors.required">
@@ -42,11 +48,8 @@
               </fieldset>
             </div>
           </div>
-
-
-
           <div class="block mb-3"></div>
-          <button class="btn btn-primary" type="submit">Create</button>
+          <button class="btn btn-primary" type="submit" [disabled]="!createForm.valid">Create</button>
         </form>
       </div>
     </div>

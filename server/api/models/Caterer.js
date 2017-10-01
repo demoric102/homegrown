@@ -16,9 +16,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-    fullname: function() {
-      return (''.concat(this.firstname,' ',this.lastname));
-    },
     address: {
       type: 'string',
       required: true

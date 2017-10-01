@@ -1,5 +1,5 @@
-
-<ng-template ngbModalContainer></ng-template>
+<ng-template ngbModalContainer>
+</ng-template>
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h6 class="modal-title text-uppercase">Edit Caterer</h6>
@@ -7,83 +7,66 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form #content="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-sm-12">
-          <div class="card">
-            <div class="card-block">
-              <div class="table-responsive">
-                <table class="table mb-0">
-                  <ng-container *ngIf="caterer$">
-                  <tbody>
-                    <tr>
-                      <td>
-                        First Name
-                      </td>
-                      <td>
-                        <input type="text" value="{{(caterer$ | async)?.firstname}}">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Last name
-                      </td>
-                      <td>
-                        <input type="text" value="{{(caterer$ | async)?.lastname}}">
-                      </td>
-                    </tr>
-                    <tr>
-                        <td>
-                          Phone Number
-                        </td>
-                        <td>
-                          <input type="text" value="{{(caterer$ | async)?.phone}}">
-                        </td>
-                      </tr>
-                    <tr>
-                      <td>
-                        Address
-                      </td>
-                      <td>
-                        <textarea name="" rows="4" value="{{(caterer$ | async)?.address}}"></textarea>
-                      </td>
-                    </tr>
-                    <tr>
-                        <td>
-                          Email
-                        </td>
-                        <td>
-                          <input type="text" value="{{(caterer$ | async)?.email}}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                          Bank
-                        </td>
-                        <td>
-                          <input type="text" value="{{(caterer$ | async)?.bank}}">
-                        </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Account Number
-                          </td>
-                          <td>
-                            <input type="text" value="{{(caterer$ | async)?.accountNumber}}">
-                          </td>
-                        </tr>
-                  </tbody>
-                  </ng-container>
-                </table>
-              </div>
-            </div>
+  <form #editCaterer="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert" [class.alert-success]="alert.status == 200" [class.alert-danger]="alert.status == 400" role="alert" *ngIf="alert.visible">
+            <strong>Oh snap!</strong> {{alert.message}}.
           </div>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <ng-container *ngIf="caterer">
+                <tbody>
+                  <tr>
+                    <td>
+                      First Name
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="firstname" #firstname="ngModel" [(ngModel)]="caterer.firstname" required/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Last name
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="lastname" #lastname="ngModel" [(ngModel)]="caterer.lastname" required/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Phone Number
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="phone" #phone="ngModel" [(ngModel)]="caterer.phone" required/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Address
+                    </td>
+                    <td>
+                      <textarea rows="4" class="form-control" name="address" #address="ngModel" [(ngModel)]="caterer.address" required></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Email
+                    </td>
+                    <td>
+                      <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="caterer.email" required/>
+                    </td>
+                  </tr>
+                </tbody>
+              </ng-container>
+            </table>
+          </div>
+        </div>
       </div>
-  </div>
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-info">Save Changes</button>
-  </div>
-</form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-info" [disabled]="!editCaterer.valid">Save Changes</button>
+    </div>
+  </form>
 </ng-template>

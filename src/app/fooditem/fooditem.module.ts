@@ -12,6 +12,7 @@ import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
 import { MatchComponent } from "./match/match.component";
 import { FooditemRoutes } from "./fooditem.routing";
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { FooditemRoutes } from "./fooditem.routing";
     ReactiveFormsModule,
     NgbProgressbarModule,
     CustomFormsModule,
+    DataTablesModule,
     TreeModule,
     TextMaskModule,
     FileUploadModule

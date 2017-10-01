@@ -5,6 +5,8 @@ import { Lga } from "../../models/lga";
 import { FooditemService } from "../../services/fooditem";
 import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
+import { Food } from '../../models/food';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
@@ -12,14 +14,19 @@ import { LgaService } from "../../services/lga";
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  fooditemService: any;
-  private fooditem: any = {};
+  private food = new Food();
   private lgas$: Observable<Array<Lga>>;
   private banks$: Observable<Array<Bank>>;
+  private progressLoading = false;
+  private alert = {
+    visible: false,
+    status: null,
+    message: ''
+  }
 
   constructor(
     private router: Router,
-    private FooditemService: FooditemService,
+    private foodItemService: FooditemService,
     private lgaService: LgaService
   ) { }
 
@@ -28,12 +35,39 @@ export class CreateComponent implements OnInit {
   }
   
   onSubmit() {
-    console.log(this.fooditem);
-    this.fooditemService.createFooditem(this.fooditem).subscribe((response) => {
-      // this.router.navigate( ['/'] );
-      console.info(response);
-    }, (reason) => {
-      console.warn(reason);
-    })
+    let that = this;
+    this.progressLoading = true;
+    that.alert = {
+      visible: false,
+      status: null,
+      message: ''
+    };
+    this.foodItemService.createFood(this.food)
+    .subscribe((data) => {
+      that.food = new Food();
+      that.alert = {
+        visible: true,
+        status: 200,
+        message: ''.concat('A new Food has been created.')
+      };
+      that.progressLoading = false;
+    }, (error: HttpErrorResponse) => {
+      that.progressLoading = false;
+      if (error.error instanceof Error) {
+        that.alert = {
+          visible: true,
+          status: error.status,
+          message: ''.concat('An error occurred:', error.error.message)
+        };
+      } else {
+        that.alert = {
+          visible: true,
+          status: error.status,
+          message: ''.concat('An error occurred:', error.error.data.invalidAttributes[Object.keys(error.error.data.invalidAttributes)[0]][0].message)
+        };
+      }
+    }, () => {
+      that.progressLoading = false;
+    });
   }
 }

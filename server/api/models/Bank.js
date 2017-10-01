@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  autoPK:false,
   attributes: {
     name: {
       type: 'string',

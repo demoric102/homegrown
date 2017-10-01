@@ -1,13 +1,13 @@
 
 <ng-template ngbModalContainer></ng-template>
-<ng-template #editCaterer let-c="close" let-d="dismiss">
+<ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h6 class="modal-title text-uppercase">Edit Caterer</h6>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form #editCaterer="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
+  <form #content="ngForm" [style.opacity]="progressLoading == true? 0.4 : 1" (ngSubmit)="onSubmit()">
   <div class="modal-body">
     <div class="row">
       <div class="col-sm-12">

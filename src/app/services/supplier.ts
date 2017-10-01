@@ -26,7 +26,7 @@ export class SupplierService {
             .map(response => response.data[0]);
     }
 
-    getLga(lga): Observable<Array<Supplier>> {
+    getWhereLga(lga): Observable<Array<Supplier>> {
         return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.SUPPLIER, '?where={"lga":"', lga, '"}&limit=null&sort=name ASC')).map(response => response.data);
     }
 }

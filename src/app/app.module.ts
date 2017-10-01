@@ -24,6 +24,7 @@ import { SupplierService } from "./services/supplier";
 import { SchoolService } from "./services/school";
 import { FoodService } from './services/food';
 import { UserService } from "./services/user";
+import { InvoiceService } from './services/invoice';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -62,7 +63,8 @@ export function createTranslateLoader(http: HttpClient) {
     FoodService,
     FooditemService,
     UserService,
-    SupplierService
+    SupplierService,
+    InvoiceService
   ],
   bootstrap: [AppComponent]
 })

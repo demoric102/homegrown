@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  schema: true,
   attributes: {
     school: {
       model: 'school'
@@ -16,6 +16,10 @@ module.exports = {
     },
     caterer: {
       model: 'caterer'
+    },
+    invoiceItems: {
+      collection: 'invoiceitem',
+      via:'invoice'
     }
   }
 };

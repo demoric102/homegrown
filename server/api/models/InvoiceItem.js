@@ -8,8 +8,12 @@
 module.exports = {
 
   attributes: {
-    food: {
-      model: 'food'
+    invoice: {
+      model: 'invoice'
+    },
+    name: {
+      type: 'string',
+      required: true
     },
     quantity: {
       type: 'float',

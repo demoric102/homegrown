@@ -16,9 +16,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-    // fullname: function() {
-    //   return (''.concat(this.firstname,' ',this.lastname));
-    // },
     address: {
       type: 'string',
       required: true
@@ -43,6 +40,11 @@ module.exports = {
     },
     bank: {
       model: 'BankAccount'
+    },
+    toJSON: function () {
+        var obj = this.toObject();
+        obj.fullname = (''.concat(obj.firstname,' ',obj.lastname));
+        return obj;
     }
   }
 };

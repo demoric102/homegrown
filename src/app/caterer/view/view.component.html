@@ -133,7 +133,7 @@
     </div>
   </div>
 </div>
-<get-supply #getSupplyModal [lga]="caterer?.lga?.id"></get-supply>
+<get-supply #getSupplyModal [caterer]="caterer?.id" [lga]="caterer?.lga?.id"></get-supply>
 <edit-caterer #editCatererModal [caterer]="caterer?.id"></edit-caterer>
 </ng-container>
 

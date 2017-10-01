@@ -18,7 +18,6 @@ module.exports = {
     },
     bank: {
       model: 'Bank',
-      
     },
     bvn: {
       type: 'string',

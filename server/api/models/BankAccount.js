@@ -17,7 +17,8 @@ module.exports = {
       required: true
     },
     bank: {
-      model: 'Bank'
+      model: 'Bank',
+      
     },
     bvn: {
       type: 'string',

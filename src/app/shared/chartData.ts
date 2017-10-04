@@ -1,33 +1,33 @@
 export const single = [
   {
-    name: 'Germany',
+    name: 'Indomie',
     value: 40
   },
   {
-    name: 'USA',
+    name: 'Egg',
     value: 49
   },
   {
-    name: 'France',
+    name: 'Chiken',
     value: 36
   },
   {
-    name: 'United Kingdom',
+    name: 'Rice',
     value: 36
   },
   {
-    name: 'Spain',
+    name: 'Turkey',
     value: 33
   },
   {
-    name: 'Italy',
+    name: 'Beans',
     value: 35
   }
 ];
 
 export const multi = [
   {
-    name: 'Germany',
+    name: 'Indomie',
     series: [
       {
         name: '2010',
@@ -44,7 +44,7 @@ export const multi = [
     ]
   },
   {
-    name: 'USA',
+    name: 'Egg',
     series: [
       {
         name: '2010',
@@ -61,7 +61,7 @@ export const multi = [
     ]
   },
   {
-    name: 'France',
+    name: 'Chiken',
     series: [
       {
         name: '2010',
@@ -78,7 +78,7 @@ export const multi = [
     ]
   },
   {
-    name: 'United Kingdom',
+    name: 'Rice',
     series: [
       {
         name: '2010',
@@ -98,7 +98,7 @@ export const multi = [
 
 export const bubble = [
   {
-    name: 'Germany',
+    name: 'Indomie',
     series: [
       {
         name: new Date(Math.floor(1473700105009 +  Math.random() * 1000000000)),
@@ -121,7 +121,7 @@ export const bubble = [
     ]
   },
   {
-    name: 'USA',
+    name: 'Egg',
     series: [
       {
         name: new Date(Math.floor(1473700105009 +  Math.random() * 1000000000)),
@@ -144,7 +144,7 @@ export const bubble = [
     ]
   },
   {
-    name: 'France',
+    name: 'Chiken',
     series: [
       {
         name: new Date(Math.floor(1473700105009 +  Math.random() * 1000000000)),
@@ -167,7 +167,7 @@ export const bubble = [
     ]
   },
   {
-    name: 'United Kingdom',
+    name: 'Rice',
     series: [
       {
         name: new Date(Math.floor(1473700105009 +  Math.random() * 1000000000)),

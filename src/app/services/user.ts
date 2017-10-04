@@ -16,6 +16,10 @@ export class UserService {
         return this.http.post<User>(''.concat(environment.apiUrl, endpoints.USER), user);
     }
 
+    loginUser(user: User): Observable<User> {
+        return this.http.post<User>(''.concat(environment.apiUrl, endpoints.USER_LOGIN), user);
+    }
+
     editUser(user: User): Observable<User> {
         return this.http.put<User>(''.concat(environment.apiUrl, endpoints.USER,'/', user.id), user);
     }

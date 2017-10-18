@@ -9,6 +9,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarModule } from 'ng-sidebar';
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { SchoolService } from "./services/school";
 import { FoodService } from './services/food';
 import { UserService } from "./services/user";
 import { InvoiceService } from './services/invoice';
+import { AuthGuardService } from './guard/auth-guard';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -40,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AsyncLocalStorageModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,
@@ -64,7 +67,8 @@ export function createTranslateLoader(http: HttpClient) {
     FooditemService,
     UserService,
     SupplierService,
-    InvoiceService
+    InvoiceService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

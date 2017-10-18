@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { UserService } from "../../services/user";
 import { User } from "../../models/user";
 import { Observable } from "rxjs/Observable";
+import { Auth } from '../../models/auth';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 @Component({
   selector: 'app-signin',
@@ -11,23 +13,18 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  private signin: any = {};
-  private user$: Observable<Array<User>>;
-  public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {}
+  private signin: User = new User();
+  constructor(private router: Router, private userService: UserService, protected localStorage: AsyncLocalStorage) {}
 
   ngOnInit() {
-    this.form = this.fb.group ( {
-      uname: [null , Validators.compose ( [ Validators.required ] )] , password: [null , Validators.compose ( [ Validators.required ] )]
-    } );
   }
 
   onSubmit() {
-    this.router.navigate ( [ '/' ] );
-    console.log(this.signin);
-    this.userService.loginUser(this.signin).subscribe((response) => {
-      this.router.navigate( ['/'] );
-      console.info(response);
+    this.userService.loginUser(this.signin).subscribe((response: Auth) => {
+      localStorage.setItem('token',response.token);
+      localStorage.setItem('uid',response.uid);
+      let url =  this.userService.getRedirectUrl();
+      this.router.navigate([ url ]);
     }, (reason) => {
       console.warn(reason);
     })

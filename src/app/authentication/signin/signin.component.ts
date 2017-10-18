@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { UserService } from "../../services/user";
+import { User } from "../../models/user";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-signin',
@@ -8,9 +11,10 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-
+  private signin: any = {};
+  private user$: Observable<Array<User>>;
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {}
 
   ngOnInit() {
     this.form = this.fb.group ( {
@@ -20,6 +24,14 @@ export class SigninComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate ( [ '/' ] );
+    console.log(this.signin);
+    this.userService.loginUser(this.signin).subscribe((response) => {
+      this.router.navigate( ['/'] );
+      console.info(response);
+    }, (reason) => {
+      console.warn(reason);
+    })
   }
+  
 
 }

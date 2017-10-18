@@ -10,6 +10,7 @@ export const endpoints = {
     INVOICE_DATATABLE: 'invoice/datatable',
     SUPPLIER_DATATABLE: 'supplier/datatable',
     USER_DATATABLE: 'user/datatable',
+    USER_LOGIN: 'user/login',
     LGA: 'lga',
     BANK: 'bank',
     BVN_SEND: 'bvn/send',

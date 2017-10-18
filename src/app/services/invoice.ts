@@ -20,7 +20,7 @@ export class InvoiceService {
         .catch((reason)=>reason.error.data);
     }
     getInvoice(id: any): Observable<Invoice> {
-        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.INVOICE,'?where={"id":"',id,'"}&populate=[school,bankaccount,lga]'))
+        return this.http.get<ApiResponse>(''.concat(environment.apiUrl, endpoints.INVOICE,'?where={"id":"',id,'"}&populate=[caterer,supplier]'))
         .map(response => response.data[0]);
     }
 }

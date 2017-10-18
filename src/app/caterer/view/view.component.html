@@ -95,49 +95,23 @@
           </div>
         </div>
 
-        <div class="card-block">
-          <div class="table-responsive">
-            <table class="table mb-0">
-              <thead>
-                <tr>
-                  <th width="10px">
-                    #
-                  </th>
-                  <th colspan="3">
-                    Name
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    1
-                  </td>
-                  <td colspan="3">
-                    First Invoice
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span>
-                                    </span> 2
-                  </td>
-                  <td>
-                    Second Invoice
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span>
-                                    </span> 3
-                  </td>
-                  <td>
-                    Third Invoice
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <div class="card-block">
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" class="table row-border table-hover dataTable">
+            <thead>
+              <tr>
+                <th>
+                  ID
+                </th>
+                <th>
+                  Supplier
+                </th>
+                <th>
+                  Time
+                </th>
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
     </div>

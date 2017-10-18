@@ -1,83 +1,79 @@
 <ng-container *ngIf="(caterer$ | async); let caterer">
-  <div class="text-ce-center my-3">
+  <div class="text-center my-3">
     <label class="switch m-b">
-          <span class="slide-toggle-content">Pending verification on BVN</span>
-          <div class="slide-toggle-bar ml-4">
-            <input type="checkbox" (change)="bvnModal.open()">
-            <span></span>
-          </div>
-        </label>
+      <span class="slide-toggle-content">Pending verification on BVN</span>
+      <div class="slide-toggle-bar ml-4">
+        <input type="checkbox" (change)="bvnModal.open()">
+        <span></span>
+      </div>
+    </label>
   </div>
   <div class="wrapper">
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <ng-container *ngIf="caterer$">
-            <div class="card-header">
-              Basic Information
-              <span class="mr-auto"></span>
-              <div class="card-controls">
-                <a href="javascript:;" (click)="editCatererModal.open()">
+          <div class="card-header">
+            Basic Information
+            <span class="mr-auto"></span>
+            <div class="card-controls">
+              <a href="javascript:;" (click)="editCatererModal.open()">
                 <i class="icon icon-software-pencil"></i>
               </a>
-              </div>
             </div>
-            <div class="card-block">
-              <div class="row mb-2">
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">Names</div>
-                    <strong>{{caterer?.firstname}} {{caterer?.lastname}}</strong>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">Address</div>
-                    <strong>{{caterer?.address}}</strong>
-                  </div>
+          </div>
+          <div class="card-block">
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Names</div>
+                  <strong>{{caterer?.firstname}} {{caterer?.lastname}}</strong>
                 </div>
               </div>
-
-              <div class="row mb-2">
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">Phone</div>
-                    <strong>{{caterer?.phone}}</strong>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">School Name</div>
-                    <strong>{{caterer?.school.name}}</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mb-2">
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">Email</div>
-                    <strong>{{caterer?.email}}</strong>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">Account Number</div>
-                    <strong>{{caterer?.bankAccount.accountNumber}}</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mb-2">
-                <div class="col">
-                  <div class="justify-content-start">
-                    <div class="mr-auto">Bank Name</div>
-                    <strong>{{caterer?.bank?.name}}</strong>
-                  </div>
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Address</div>
+                  <strong>{{caterer?.address}}</strong>
                 </div>
               </div>
             </div>
-          </ng-container>
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Phone</div>
+                  <strong>{{caterer?.phone}}</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">School Name</div>
+                  <strong>{{caterer?.school.name}}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Email</div>
+                  <strong>{{caterer?.email}}</strong>
+                </div>
+              </div>
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Account Number</div>
+                  <strong>{{caterer?.bankAccount.accountNumber}}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="col">
+                <div class="justify-content-start">
+                  <div class="mr-auto">Bank Name</div>
+                  <strong>{{caterer?.bank?.name}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -94,28 +90,29 @@
           </a>
           </div>
         </div>
-
-      <div class="card-block">
-        <div class="table-responsive">
-          <table datatable [dtOptions]="dtOptions" class="table row-border table-hover dataTable">
-            <thead>
-              <tr>
-                <th>
-                  ID
-                </th>
-                <th>
-                  Supplier
-                </th>
-                <th>
-                  Time
-                </th>
-              </tr>
-            </thead>
-          </table>
+        <div class="card-block">
+          <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table row-border table-hover dataTable">
+              <thead>
+                <tr>
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Supplier
+                  </th>
+                  <th>
+                    Time
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <get-supply #getSupplyModal [caterer]="caterer?.id" [lga]="caterer?.lga?.id"></get-supply>
   <edit-caterer #editCatererModal [caterer]="caterer"></edit-caterer>
   <bvn-modal #bvnModal></bvn-modal>

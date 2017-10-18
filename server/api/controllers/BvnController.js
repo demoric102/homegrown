@@ -7,13 +7,26 @@
 
 var actionUtil = require('sails/lib/hooks/blueprints/actionUtil');
 module.exports = {
-    verify: function (req, res) {
+    send: function (req, res) {
         req.validate({
             bvn: "string",
             otpoption: "string"
         });
         var reqData = actionUtil.parseValues(req);
         FlutterWaveService.verifyBvn(reqData).then(function (response) {
+            return res.ok(response);
+        }).catch(function (reason) {
+            return res.negotiate(reason);
+        });
+    },
+    validate: function (req, res) {
+        req.validate({
+            bvn: "string",
+            otp: "string",
+            transactionreference: "string"
+        });
+        var reqData = actionUtil.parseValues(req);
+        FlutterWaveService.validateBvn(reqData).then(function (response) {
             return res.ok(response);
         }).catch(function (reason) {
             return res.negotiate(reason);

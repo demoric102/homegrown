@@ -14,7 +14,10 @@ module.exports = {
                 if (err) {
                     reject(err)
                 }
-                resolve(body.data)
+                if (body.data && body.data.responsecode === "RR") {
+                    reject(body.data);
+                }
+                resolve(body.data);
             })
         })
         return promise;
@@ -26,7 +29,25 @@ module.exports = {
                 if (err) {
                     reject(err)
                 }
-                resolve(body.data)
+                if (body.data && (body.data.responsecode === "RR" || body.data.responseCode === "RR")) {
+                    reject(body.data);
+                }
+                resolve(body.data);
+            });
+        });
+        return promise;
+    },
+
+    validateBvn: function (data) {
+        var promise = new Promise(function (resolve, reject) {
+            flutterwave.BVN.validate(data.otp, data.bvn, data.transactionreference, function (err, res, body) {
+                if (err) {
+                    reject(err)
+                }
+                if (body.data && (body.data.responsecode === "RR" || body.data.responseCode === "RR")) {
+                    reject(body.data);
+                }
+                resolve(body.data);
             });
         });
         return promise;

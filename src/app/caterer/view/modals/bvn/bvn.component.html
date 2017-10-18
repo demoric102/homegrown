@@ -1,0 +1,84 @@
+<ng-template ngbModalContainer></ng-template>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h6 class="modal-title text-uppercase">BVN Verification</h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div *ngIf="!tokenValidator; else token">
+        <form #bvnVerificationForm="ngForm" (ngSubmit)="sendOtp()">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <fieldset class="form-group" [class.has-danger]="bvn.errors && bvn.touched">
+                            <label for="bvn">
+                            BVN
+                          </label>
+                            <input type="text" class="form-control" placeholder="Enter BVN" name="bvn" #bvn="ngModel" [(ngModel)]="send.bvn" minlength="2"
+                                required/>
+                            <div class="form-control-feedback" *ngIf="bvn.errors && bvn.touched">
+                                <small [hidden]="!bvn.errors.required">
+                          BVN is required.
+                        </small>
+                                <small [hidden]="!bvn.errors.minlength">
+                          Min characters is 2
+                        </small>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                        <fieldset class="form-group" [class.has-danger]="method.errors && method.touched">
+                            <label for="method">
+                          Verification Method
+                        </label>
+                            <select name="method" class="form-control" #method="ngModel" [(ngModel)]="send.otpoption" required>
+                                    <option></option>
+                                    <option value="SMS">SMS</option>
+                            <option value="VOICE">Voice Call</option>
+                        </select>
+                            <div class="form-control-feedback" *ngIf="method.errors && method.touched">
+                                <small [hidden]="!method.errors.required">
+                          Verification method is required.
+                        </small>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <a href="#" class="pull-right">Resend OTP</a>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary">Verify BVN</button>
+            </div>
+        </form>
+    </div>
+    <ng-template #token>
+        <form #tokenValidationForm="ngForm" (ngSubmit)="verifyOtp()">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <fieldset class="form-group" [class.has-danger]="token.errors && token.touched">
+                            <label for="token">
+                                TOKEN
+                            </label>
+                            <input type="text" class="form-control text-center" placeholder="******" name="token" #token="ngModel" [(ngModel)]="verify.otp"
+                                minlength="2" required/>
+                            <div class="form-control-feedback" *ngIf="token.errors && token.touched">
+                                <small [hidden]="!token.errors.required">
+                              Token is required.
+                            </small>
+                                <small [hidden]="!token.errors.minlength">
+                              Min characters is 2
+                            </small>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <a href="#" class="pull-right">Back</a>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary">Authorize</button>
+            </div>
+        </form>
+    </ng-template>
+</ng-template>

@@ -12,6 +12,7 @@ export const endpoints = {
     USER_DATATABLE: 'user/datatable',
     LGA: 'lga',
     BANK: 'bank',
-    BVN_VERIFY: 'bvn/verify',
+    BVN_SEND: 'bvn/send',
+    BVN_VALIDATE: 'bvn/validate',
     value: 40
 };

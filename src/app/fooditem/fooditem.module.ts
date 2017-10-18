@@ -10,7 +10,6 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
-import { MatchComponent } from "./match/match.component";
 import { FooditemRoutes } from "./fooditem.routing";
 import { DataTablesModule } from 'angular-datatables';
 
@@ -27,7 +26,7 @@ import { DataTablesModule } from 'angular-datatables';
     TextMaskModule,
     FileUploadModule
   ],
-  declarations: [CreateComponent,ListComponent,MatchComponent]
+  declarations: [CreateComponent,ListComponent]
 })
 
 export class FooditemModule {}

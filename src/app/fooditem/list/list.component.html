@@ -6,16 +6,19 @@
       </div>
       <div class="card-block">
         <div class="table-responsive">
-          <table datatable [dtOptions]="dtOptions" class="table row-border table-hover dataTable">
+          <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Phone</th>
-                <th>LGA</th>
-                <th>Registered</th>
+                <th>Name</th>
+                <th>Unit Price</th>
               </tr>
             </thead>
+            <tbody>
+              <tr *ngFor="let food of (foods$ | async)">
+                  <td>{{food.name}}</td>
+                  <td>{{food.unitPrice}}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

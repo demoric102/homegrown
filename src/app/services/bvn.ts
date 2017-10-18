@@ -12,7 +12,11 @@ export class BvnService {
 
     constructor(private http: HttpClient) { }
 
+    sendToken(bvn: Bvn): Observable<Bvn> {
+        return this.http.post<ApiResponse>(''.concat(environment.apiUrl, endpoints.BVN_SEND), bvn).map(response => response.data);
+    }
+
     verify(bvn: Bvn): Observable<Bvn> {
-        return this.http.post<ApiResponse>(''.concat(environment.apiUrl, endpoints.BVN_VERIFY), bvn).map(response => response.data);
+        return this.http.post<ApiResponse>(''.concat(environment.apiUrl, endpoints.BVN_VALIDATE), bvn).map(response => response.data);
     }
 }

@@ -25,41 +25,39 @@ module.exports.policies = {
   * access)                                                                  *
   *                                                                          *
   ***************************************************************************/
-  '*' : [],
-  // IndexController: [],
-  // UserController: {
-  //   'login': true,
-  //   'signup': true,
-  //   'resetPasswordLink': true,
-  //   'newPassword': true
-  // },
-  // CardController: {
-  //   'openTransfer': true,
-  //   'otpValidateCharge': true,
-  //   'enquiry':true
-  // },
-  // LightController: {
-  //   'validate': true,
-  //   'getToken': true,
-  //   'sendToken': true
-  // },
-  // LightVendorController: {
-  //   'find': true,
-  //   'findOne': true
-  // },
-  // BankAccountController: {
-  //   'verify': true
-  // },
-  // BankController: {
-  //   'availableBanks': true
-  // },
-  // '*': [
-  //   'hasToken',
-  //   'isAuthenticated',
-  //   'ModelPolicy',
-  //   'PermissionPolicy',
-  //   'RolePolicy'
-  // ],
+  // '*' : [],
+  IndexController: [],
+  UserController: {
+    'login': true,
+    'signup': true,
+    'resetPasswordLink': true,
+    'newPassword': true
+  },
+  '*': [
+    'hasToken',
+    'isAuthenticated',
+    'ModelPolicy',
+    'PermissionPolicy',
+    'RolePolicy'
+  ],
+  CatererController: {
+    'datatable': [
+      'hasToken',
+      'isAuthenticated',
+    ]
+  },
+  SupplierController: {
+    'datatable': [
+      'hasToken',
+      'isAuthenticated',
+    ]
+  },
+  InvoiceController: {
+    'datatable': [
+      'hasToken',
+      'isAuthenticated',
+    ]
+  },
 
   /***************************************************************************
   *                                                                          *

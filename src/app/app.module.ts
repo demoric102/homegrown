@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -27,6 +27,7 @@ import { FoodService } from './services/food';
 import { UserService } from "./services/user";
 import { InvoiceService } from './services/invoice';
 import { AuthGuardService } from './guard/auth-guard';
+import { TokenInterceptor } from './interceptor/interceptor';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -68,7 +69,12 @@ export function createTranslateLoader(http: HttpClient) {
     UserService,
     SupplierService,
     InvoiceService,
-    AuthGuardService
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

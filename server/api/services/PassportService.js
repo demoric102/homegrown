@@ -5,7 +5,7 @@
 var passport = require('passport');
 var bcrypt = require('bcrypt-nodejs');
 
-var SECRET = sails.config.tokenSecret;
+var SECRET = sails.config.jwtSettings.secret;
 var ISSUER = sails.config.jwtSettings.issuer;
 var AUDIENCE = sails.config.jwtSettings.audience;
 
@@ -32,7 +32,7 @@ var JWT_STRATEGY_CONFIG = {
     issuer: ISSUER,
     audience: AUDIENCE,
     passReqToCallback: false,
-    jwtFromRequest: sails.config.passport.jwt.extractJwt.fromAuthHeader()
+    jwtFromRequest: sails.config.passport.jwt.extractJwt.fromAuthHeaderWithScheme("JWT")
 };
 
 /**
@@ -107,7 +107,7 @@ function _onLocalStrategyAuth(req, email, password, next) {
  * @private
  */
 function _onJwtStrategyAuth(payload, next) {
-    //sails.log.info('JWT User... ',payload);
+    sails.log.info('JWT User... ',payload);
     var user = payload.user;
     return next(null, user, {});
 }

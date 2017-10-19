@@ -39,6 +39,8 @@ export class ListComponent implements OnInit {
         this.catererService.datatable(data)
           .subscribe((response) => {
             callback(response);
+          },(err)=>{
+            console.log('err',err)
           });
       },
       rowCallback: (row: Node, data: any[] | Object | any, index: number) => {

@@ -39,6 +39,7 @@
     "sails": "^0.12.14",
     "sails-datatables": "^1.2.0",
     "sails-disk": "^0.10.10",
+    "sails-hook-orm": "^1.0.9",
     "sails-mongo": "^0.12.3",
     "sha512": "0.0.1",
     "unirest": "^0.5.1"

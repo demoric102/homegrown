@@ -39,6 +39,14 @@ module.exports = {
     hookTimeout: 1200000,
     port: 8081,
     tokenSecret: "4ukI0uIVnB3iI1yxj646fVXSE3ZVk4doZgz6fTbNg7jO41EAtl20J5F7Trtwe7OM",
+    defaults: {
+        gateway_config: {
+            auth: {
+                apiKey: 'lk_EXHVKvcodhuMZNUgbGIj',
+                secret: 'lk_f3xgDZsLni'
+            }
+        }
+    },
     jwtSettings: {
         secret: "4ukI0uIVnB3iI1yxj646fVXSE3ZVk4doZgz6fTbNg7jO41EAtl20J5F7Trtwe7OM",
         expiresInMinutes: "25m"

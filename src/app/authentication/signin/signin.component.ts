@@ -13,7 +13,7 @@ import { AsyncLocalStorage } from 'angular-async-local-storage';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  private signin: User = new User();
+  public signin: User = new User();
   constructor(private router: Router, private userService: UserService, protected localStorage: AsyncLocalStorage) { }
 
   ngOnInit() {

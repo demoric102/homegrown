@@ -17,11 +17,11 @@ import { Caterer } from '../../models/caterer';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  private caterer: any = new Caterer();
-  private lgas$: Observable<Array<Lga>>;
-  private banks$: Observable<Array<Bank>>;
-  private schools$: Observable<Array<School>>;
-  private progressLoading = false;
+  public caterer: any = new Caterer();
+  public lgas$: Observable<Array<Lga>>;
+  public banks$: Observable<Array<Bank>>;
+  public schools$: Observable<Array<School>>;
+  public progressLoading = false;
   private alert = {
     visible: false,
     status: null,

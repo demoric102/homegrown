@@ -12,9 +12,9 @@ import { LgaService } from "../../services/lga";
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  private zone: any = {};
-  private lgas$: Observable<Array<Lga>>;
-  private banks$: Observable<Array<Bank>>;
+  public zone: any = {};
+  public lgas$: Observable<Array<Lga>>;
+  public banks$: Observable<Array<Bank>>;
 
   constructor(
     private router: Router,

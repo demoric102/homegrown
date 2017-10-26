@@ -14,11 +14,11 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  private food = new Food();
-  private lgas$: Observable<Array<Lga>>;
-  private banks$: Observable<Array<Bank>>;
-  private progressLoading = false;
-  private alert = {
+  public food = new Food();
+  public lgas$: Observable<Array<Lga>>;
+  public banks$: Observable<Array<Bank>>;
+  public progressLoading = false;
+  public alert = {
     visible: false,
     status: null,
     message: ''

@@ -16,9 +16,9 @@ import { Bank } from "../../models/bank";
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  private signup: any = {};
-  private lgas$: Observable<Array<Lga>>;
-  private banks$: Observable<Array<Bank>>;
+  public signup: any = {};
+  public lgas$: Observable<Array<Lga>>;
+  public banks$: Observable<Array<Bank>>;
   
   constructor(
     private router: Router,

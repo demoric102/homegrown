@@ -31,7 +31,11 @@ module.exports.policies = {
     'login': true,
     'signup': true,
     'resetPasswordLink': true,
-    'newPassword': true
+    'newPassword': true,
+    'roles': [
+      'hasToken',
+      'isAuthenticated',
+    ]
   },
   '*': [
     'hasToken',

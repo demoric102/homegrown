@@ -14,10 +14,10 @@ import { SupplierService } from "../../services/supplier";
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  private supplier: any = {};
-  private lgas$: Observable<Array<Lga>>;
-  private banks$: Observable<Array<Bank>>;
-  private progressLoading = false;
+  public supplier: any = {};
+  public lgas$: Observable<Array<Lga>>;
+  public banks$: Observable<Array<Bank>>;
+  public progressLoading = false;
 
   constructor(
     private router: Router,

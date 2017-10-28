@@ -5,7 +5,7 @@
         Create Zone
       </div>
       <div class="card-block">
-        <form #createForm="ngForm" (ngSubmit)="bvnModal.open()">
+        <form #createForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="col-md-12">
               <fieldset class="form-group" [class.has-danger]="name.errors && name.touched">

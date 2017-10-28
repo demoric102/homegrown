@@ -18,13 +18,13 @@ export class ViewComponent implements OnInit {
   closeResult: string;
   images: any[] = [];
   num = 1;
-  private supplier: any = {};
-  private user: any = {};
-  private lgas$: Observable<Array<Lga>>;
-  private banks$: Observable<Array<Bank>>;
-  private user$: Observable<User>;
-  private progressLoading = false;
-  private alert = {
+  public supplier: any = {};
+  public user: any = {};
+  public lgas$: Observable<Array<Lga>>;
+  public banks$: Observable<Array<Bank>>;
+  public user$: Observable<User>;
+  public progressLoading = false;
+  public alert = {
     visible: false,
     status: null,
     message: ''

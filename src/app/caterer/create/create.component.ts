@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
   public banks$: Observable<Array<Bank>>;
   public schools$: Observable<Array<School>>;
   public progressLoading = false;
-  private alert = {
+  public alert = {
     visible: false,
     status: null,
     message: ''

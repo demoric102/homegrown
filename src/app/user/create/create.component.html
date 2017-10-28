@@ -134,9 +134,9 @@
                 <label for="role">
                   Role
                 </label>
-                <select name="role" class="form-control" #role="ngModel" [(ngModel)]="user.role" (change)="selectSchools(user.role);">
+                <select name="role" class="form-control" #role="ngModel" [(ngModel)]="user.role">
                   <option disabled selected></option>
-                  <option *ngFor="let role of (role$ | async)" [value]="role.id">{{role?.name}}</option>
+                  <option *ngFor="let role of (roles$ | async)" [value]="role.id">{{role?.name}}</option>
                 </select>
               </fieldset>
             </div>
@@ -145,9 +145,9 @@
                 <label for="lga">
                   Local Govt. Area
                 </label>
-                <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="user.lga" (change)="selectSchools(user.lga);">
+                <select name="lga" class="form-control" #lga="ngModel" [(ngModel)]="user.lga">
                   <option disabled selected></option>
-                  <option *ngFor="let lga of (lga$ | async)" [value]="lga.id">{{lga?.name}}</option>
+                  <option *ngFor="let lga of (lgas$ | async)" [value]="lga.id">{{lga?.name}}</option>
                 </select>
               </fieldset>
             </div>

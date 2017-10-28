@@ -91,6 +91,10 @@ module.exports = {
                 });
             });
         });
-    }
+    },
+    
+        roles: function (req, res) {
+            Role.find().then(res.ok).catch(res.negotiate);
+        }
 };
 

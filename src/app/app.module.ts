@@ -28,6 +28,7 @@ import { UserService } from "./services/user";
 import { InvoiceService } from './services/invoice';
 import { AuthGuardService } from './guard/auth-guard';
 import { TokenInterceptor } from './interceptor/interceptor';
+import { RoleService } from './services/role';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -66,6 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
     SchoolService,
     FoodService,
     FooditemService,
+    RoleService,
     UserService,
     SupplierService,
     InvoiceService,

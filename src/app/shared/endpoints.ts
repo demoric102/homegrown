@@ -13,6 +13,7 @@ export const endpoints = {
     USER_LOGIN: 'user/login',
     LGA: 'lga',
     BANK: 'bank',
+    ROLE: 'user/roles',
     BVN_SEND: 'bvn/send',
     BVN_VALIDATE: 'bvn/validate',
     value: 40

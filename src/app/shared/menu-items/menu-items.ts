@@ -23,15 +23,15 @@ export interface Menu {
 const MENUITEMS = [
   {
     state: '/',
-    name: 'HOME',
+    name: 'DASHBOARD',
     type: 'link',
-    icon: 'basic-accelerator'
+    icon: 'ecommerce-graph3'
   },
   {
     state: 'supplier',
     name: 'SUPPLIER',
     type: 'sub',
-    icon: 'basic-paperplane',
+    icon: 'ecommerce-cart-plus',
     children: [
       {
         state: 'create',
@@ -63,7 +63,7 @@ const MENUITEMS = [
     state: 'fooditem',
     name: 'FOODITEM',
     type: 'sub',
-    icon: 'basic-paperplane',
+    icon: 'ecommerce-basket',
     children: [
       {
         state: 'create',
@@ -79,7 +79,7 @@ const MENUITEMS = [
     state: 'caterer',
     name: 'CATERER',
     type: 'sub',
-    icon: 'basic-paperplane',
+    icon: 'software-paintbucket',
     children: [
       {
         state: 'create',
@@ -95,7 +95,7 @@ const MENUITEMS = [
     state: 'zone',
     name: 'ZONE',
     type: 'sub',
-    icon: 'basic-paperplane',
+    icon: 'basic-signs',
     children: [
       {
         state: 'create',

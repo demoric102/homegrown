@@ -9,6 +9,8 @@ import { BankService } from "../../services/bank";
 import { SchoolService } from "../../services/school";
 import { HttpErrorResponse } from "@angular/common/http";
 import { School } from "../../models/school";
+import { RoleService } from '../../services/role';
+import { Role } from '../../models/role';
 
 @Component({
   selector: 'app-create',
@@ -17,10 +19,8 @@ import { School } from "../../models/school";
 })
 export class CreateComponent implements OnInit {
   public user: any = {};
+  public roles$: Observable<Array<Role>>;
   public lgas$: Observable<Array<Lga>>;
-  public banks$: Observable<Array<Bank>>;
-  public lga$: Observable<Array<Lga>>;
-  public schools$: Observable<Array<School>>;
   public progressLoading = false;
   public alert = {
     visible: false,
@@ -31,21 +31,15 @@ export class CreateComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private lgaService: LgaService,
-    private schoolService: SchoolService,
-    private bankService: BankService
+    private roleService: RoleService,
+    private lgaService: LgaService
   ) { }
 
   ngOnInit() {
+    this.roles$ = this.roleService.getAll();
     this.lgas$ = this.lgaService.getAll();
-    this.banks$ = this.bankService.getAll();
-    this.schools$ = null; 
-    this.schoolService.getAll();
   }
   
-  selectSchools(lga){
-    this.schools$ = this.schoolService.getLga(lga);
-  }
   onSubmit() {
     let that = this;
     this.progressLoading = true;

@@ -10,8 +10,8 @@ import { SupplierService } from "../../services/supplier";
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
-  private supplier: any = {};
-  private supplier$: Observable<Supplier>;
+  public supplier: any = {};
+  public supplier$: Observable<Supplier>;
 
   constructor(
     private router: Router,

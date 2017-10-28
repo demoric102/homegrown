@@ -5,6 +5,7 @@ import { Lga } from "../../models/lga";
 import { CatererService } from "../../services/caterer";
 import { Router } from "@angular/router";
 import { LgaService } from "../../services/lga";
+import { Zone } from '../../models/zone';
 
 @Component({
   selector: 'app-match',
@@ -13,8 +14,9 @@ import { LgaService } from "../../services/lga";
 })
 export class MatchComponent implements OnInit {
   public zone: any = {};
-  public lgas$: Observable<Array<Lga>>;
   public banks$: Observable<Array<Bank>>;
+  public lgas$: Observable<Array<Lga>>;
+  public zones$: Observable<Array<Zone>>;
 
   constructor(
     private router: Router,
@@ -23,6 +25,7 @@ export class MatchComponent implements OnInit {
 
   ngOnInit() {
     this.lgas$ = this.lgaService.getAll();
+    this.zones$ = null;
   }
   
   onSubmit() {

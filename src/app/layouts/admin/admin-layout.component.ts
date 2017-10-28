@@ -87,7 +87,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   setTitle( newTitle: string) {
-    this.titleService.setTitle( 'Decima - Bootstrap 4 Angular Admin Template | ' + newTitle );
+    this.titleService.setTitle( 'HGSFP - Home Grown School Feeding Programme | ' + newTitle );
   }
 
   toogleSidebar(): void {

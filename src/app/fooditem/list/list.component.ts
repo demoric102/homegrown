@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  private foods$: Observable<Array<Food>>;
+  public foods$: Observable<Array<Food>>;
 
   constructor(
     private router: Router,

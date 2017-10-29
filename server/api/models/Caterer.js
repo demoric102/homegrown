@@ -8,9 +8,17 @@
 module.exports = {
   schema: true,
   attributes: {
+    formId: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
     firstname: {
       type: 'string',
       required: true
+    },
+    middlename: {
+      type: 'string'
     },
     lastname: {
       type: 'string',
@@ -28,6 +36,16 @@ module.exports = {
     email: {
       type: 'string',
     },
+    gender: {
+      type: 'string',
+      enum: ['male','female'],
+      defaultsTo: 'male'
+    },
+    maritalStatus: {
+      type: 'string',
+      enum: ['single','married','divorced'],
+      defaultsTo: 'single'
+    },
     school: {
       model: 'School'
     },
@@ -36,6 +54,18 @@ module.exports = {
     },
     bankAccount: {
       model: 'BankAccount'
+    },
+    dateOfBirth: {
+      type: 'datetime'
+    },
+    nameOfGuarantor: {
+      type: 'string',
+    },
+    addressOfGuarantor: {
+      type: 'string',
+    },
+    phoneOfGuarantor: {
+      type: 'string',
     },
     toJSON: function () {
         var obj = this.toObject();
